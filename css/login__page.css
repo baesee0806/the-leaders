@@ -11,12 +11,7 @@
     /* background:  #f1f1f2; */
 }
 
-.box::before{
-    content: "";
-    position: absolute;
-    z-index: 1;
-    top: 0; right: 0; left: 0; bottom: 0;
-}
+
 
 .login__wrap,
 .membership__wrap{
