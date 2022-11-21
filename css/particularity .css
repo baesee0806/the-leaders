@@ -50,6 +50,7 @@ body {
 /* 사이드 바 */
 ul {
   list-style: none;
+  direction: none;
 }
 li {
 }
@@ -68,6 +69,7 @@ li {
 .post__side-bar-list li a {
   font-size: 13px;
   line-height: 15px;
+  direction: none;
 }
 .post__side-bar-list li a span {
   float: left;
@@ -81,12 +83,11 @@ li {
   text-align: center;
 }
 .post__side-bar-list li a span.txt{
-  /* text-overflow: ellipsis;
+  text-overflow: ellipsis;
   white-space: nowrap;
   word-wrap: normal;
   width: auto;
   overflow: hidden;
-  border-bottom: 1px solid transparent; */
 }
 /* #txt{
   font-size: ;
