@@ -7,7 +7,8 @@ const routes = {
   404: "/pages/404.html",
   '/': "/pages/main.html",
   write: "/pages/write.html",
-  login: "/pages/login.html",
+  login: "/pages/login__page.html",
+  membership:"/pages/membership.html",
 };
 
 export const handleLocation = async () => {
