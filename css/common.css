@@ -1,0 +1,12 @@
+/* 공통 선택자 */
+
+html , body {
+  height: 100vh;
+  font-family: 'Noto Sans KR', sans-serif;
+  color : #000
+}
+
+a { 
+  color: #000;
+  text-decoration: none;
+}

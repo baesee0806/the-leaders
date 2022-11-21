@@ -1,0 +1,23 @@
+/* header 영역 */
+.header {
+  /* background-color: red; */
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #000;
+}
+
+.header .logo {
+  margin-left: 50px;
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.header .header__end {
+  margin-right: 50px;
+}
+
+.header .header__end a:first-child {
+  margin-right: 20px;
+}
