@@ -1,5 +1,6 @@
 import { authService } from "./firebase.js";
-import { handleLocation,route } from "./router.js";
+import { route , handleLocation } from "./router.js";
+import { onToggle , toLogout , toWrite } from "./header.js";
 import { handleAuth, socialLogin, logout  } from "./auth.js"
 import { changeProfileImage, changeProfileNickname, onFileChange, nicknameBtn } from "./profile.js";
 
@@ -42,6 +43,9 @@ document.addEventListener("DOMContentLoaded",  () => {
 
 // 전역함수 리스트 
 window.route = route;
+window.onToggle = onToggle;
+window.toLogout = toLogout;
+window.toWrite = toWrite;
 window.handleAuth = handleAuth;
 window.socialLogin = socialLogin;
 window.logout = logout

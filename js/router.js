@@ -40,10 +40,3 @@ export const handleLocation = async () => {
       authService.currentUser.email ?? "이메일 없음";  
   };
 };
-
-
-// hash url 변경 시 처리
-window.addEventListener("hashchange", handleLocation);
-window.route = route;
-// 첫 랜딩 또는 새로고침 시 처리
-document.addEventListener("DOMContentLoaded", handleLocation);
