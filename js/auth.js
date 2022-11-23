@@ -1,0 +1,128 @@
+import { emailRegex, pwRegex } from "./util.js";
+
+import { authService } from "./firebase.js";
+
+
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.9.0/firebase-auth.js";
+import {
+    // createUserWithEmailAndPassword,
+    // signInWithEmailAndPassword,
+    GoogleAuthProvider,
+    signInWithPopup,
+    GithubAuthProvider,
+    signOut,
+  } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-auth.js";
+  
+
+export function handleAuth(event){
+    if(document.querySelector('#signup__btn').innerText === '가입하기'){
+
+    event.preventDefault()
+    const signUpEmail = document.getElementById('signup__email').value
+    const signUpPassword = document.getElementById('signup__pw').value
+    const signUpNickname = document.getElementById('signup__pw').value
+
+    createUserWithEmailAndPassword(authService, signUpEmail, signUpPassword,signUpNickname)
+        .then((userCredential) => {
+
+            console.log(userCredential)
+            const user = userCredential.user;
+            window.location.hash = "/";
+
+            console.log(user)
+         
+        })
+        .catch((error) => {
+            console.log('error')
+            const errorCode = error.code;
+            const errorMessage = error.message;
+        });
+}else{
+    event.preventDefault();
+    const email = document.getElementById("signin__email");
+    const emailVal = email.value;
+    const pw = document.getElementById("signin__pw");
+    const pwVal = pw.value;
+  
+    // 유효성 검사 진행
+    if (!emailVal) {
+      alert("이메일을 입력해 주세요");
+      email.focus();
+      return;
+    }
+    if (!pwVal) {
+      alert("비밀번호를 입력해 주세요");
+      pw.focus();
+      return;
+    }
+  
+    const matchedEmail = emailVal.match(emailRegex);
+    const matchedPw = pwVal.match(pwRegex);
+  
+    if (matchedEmail === null) {
+      alert("이메일 형식에 맞게 입력해 주세요");
+      email.focus();
+      return;
+    }
+    if (matchedPw === null) {
+      alert("비밀번호는 8자리 이상 영문자, 숫자, 특수문자 조합이어야 합니다.");
+      pw.focus();
+      return;
+    }
+    //로그인
+
+    event.preventDefault()
+    const signInEmail = document.getElementById('signin__email').value
+    const signInPassword = document.getElementById('signin__pw').value
+    signInWithEmailAndPassword(authService, signInEmail, signInPassword)
+        .then((userCredential) => {
+            const user = userCredential.user;
+            console.log(userCredential)
+            window.location.hash = "/";
+            // document.querySelector('#log__inout').innerText = '로그아웃'
+
+
+
+        })
+        .catch((error) => {
+            console.log('로그인 실패')
+            const errorCode = error.code;
+            const errorMessage = error.message;
+        });
+}}
+
+
+export const socialLogin = (str) => {
+    let provider;
+    if (str === "google") {
+      provider = new GoogleAuthProvider();
+    } else if (str === "github") {
+      provider = new GithubAuthProvider();
+    }
+    signInWithPopup(authService, provider)
+      .then((result) => {
+        const user = result.user;
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        console.log("error:", error);
+        const errorCode = error.code;
+        const errorMessage = error.message;
+      });
+  };
+
+  export const logout = () => {
+    signOut(authService)
+      .then(() => {
+        // Sign-out successful.
+        localStorage.clear();
+        console.log("로그아웃 성공");
+        document.querySelector('#log__inout').innerText = '로그인'
+        window.location.hash = "/"
+    })
+      .catch((error) => {
+        // An error happened.
+        console.log("error:", error);
+      });
+  };
+  

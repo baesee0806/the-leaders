@@ -1,3 +1,5 @@
+// import { authService } from "./firebase.js";
+
 export const route = (event) => {
   event.preventDefault();
   window.location.hash = event.target.hash;
@@ -5,10 +7,10 @@ export const route = (event) => {
 
 const routes = {
   404: "/pages/404.html",
-  '/': "/pages/mainpage.html",
+  '/': "/pages/main.html",
   write: "/pages/write.html",
-  login: "/pages/login.html",
-  profile: "/pages/profile.html",
+  login: "/pages/login__page.html",
+  membership:"/pages/membership.html",
 };
 
 export const handleLocation = async () => {

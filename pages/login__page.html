@@ -1,0 +1,42 @@
+<div class="box">
+  <div class="login__wrap">
+    <!-- 로그인  -->
+    <h1>LOGIN</h1>
+    <form>
+      <!-- ID 입력란 -->
+      <div class="login__ip--area">
+        <input
+          type="text"
+          name="signin__email"
+          id="signin__email"
+          autocomplete="off"
+          required
+        />
+        <label for="signin__email">아이디</label>
+      </div>
+      <!-- pssword 입력란 -->
+      <div class="login__ip--area">
+        <input
+          type="password"
+          name="signin__pw"
+          id="signin__pw"
+          autocomplete="off"
+          required
+        />
+        <label for="signin__pw">패스워드</label>
+      </div>
+      <!-- 로그인 버튼  -->
+      <div class="login__btn--area">
+        <button type="submit" id="signin__btn">로그인</button>
+      </div>
+    </form>
+    <!-- 소셜 로그인 -->
+    <div class="login__social--area">
+      <a onclick="socialLogin('google')"><i class="fa-brands fa-google"></i></a>
+      <a onclick="socialLogin('github')"><i class="fa-brands fa-github"></i></a>
+      <div class="login__membership">
+        <a href="#membership" onclick="route(event)">회원 가입</a>
+      </div>
+    </div>
+  </div>
+</div>

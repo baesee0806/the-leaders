@@ -1,0 +1,46 @@
+<div class="box">
+  <div class="login__wrap membership__wrap">
+    <!-- 로그인  -->
+    <h1>회원 가입</h1>
+    <form>
+      <!-- ID 입력란 -->
+      <div class="login__ip--area membership__ipn--area">
+        <input
+          type="text"
+          name="signup__email"
+          id="signup__email"
+          autocomplete="off"
+          required
+        />
+        <label for="signup__email">Email</label>
+      </div>
+      <!-- pssword 입력란 -->
+      <div class="login__ip--area">
+        <input
+          type="password"
+          name="signup__pw"
+          id="signup__pw"
+          autocomplete="off"
+          required
+        />
+        <label for="signup__pw">비밀번호</label>
+      </div>
+      <div class="login__ip--area">
+        <input
+          type="text"
+          name="signup__nick"
+          id="signup__nick"
+          autocomplete="off"
+          required
+        />
+        <label for="signup__nick">닉네임</label>
+      </div>
+      <!-- 로그인 버튼  -->
+      <div class="login__btn--area">
+        <button type="submit" id="signup__btn" onclick="handleAuth(event)">
+          가입하기
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
