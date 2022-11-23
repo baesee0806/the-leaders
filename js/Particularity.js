@@ -1,8 +1,11 @@
 window.onload = function () {
   //해당 페이지 링크 표기
-  document.getElementById("Content-Url").innerHTML = window.location.href;
+  const contentUrl = document.getElementById("Content-Url");
+  if (contentUrl) {
+    contentUrl.innerHTML = window.location.href;
+  }
 };
-function urlClip() {
+export function urlClip() {
   var url = ""; //<a>태그에서 호출한 urlClip 함수 생성.
   var textarea = document.createElement("textarea"); // url 변수 생성, textarea 변수에 textarea 요소생성
   document.body.appendChild(textarea); //</body> 바로위에 textarea 추가
@@ -23,16 +26,23 @@ window.onscroll = function () {
   scrollFunction();
 };
 
-function scrollFunction() {
-  if (document.body.scrollTop > 40 || document.documentElement.scrollTop > 40) {
-    mybutton.style.display = "block";
-  } else {
-    mybutton.style.display = "none";
+export function scrollFunction() {
+  if (mybutton) {
+    if (
+      document.body.scrollTop > 40 ||
+      document.documentElement.scrollTop > 40
+    ) {
+      mybutton.style.display = "block";
+    } else {
+      mybutton.style.display = "none";
+    }
   }
 }
 
 // 버튼 click 시 게시글의 Top으로 이동
-function topFunction() {
+export function topFunction() {
   document.body.scrollTop = 0;
   document.documentElement.scrollTop = 0;
 }
+
+// 댓글 등록

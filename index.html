@@ -1,40 +1,45 @@
 <!DOCTYPE html>
 <html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
+      rel="stylesheet"
+    />
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- google font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
-  
-  <!-- css -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
-  <link rel="stylesheet" href="./css/common.css">
-  <link rel="stylesheet" href="./css/header.css">
-  <link rel="stylesheet" href="./css/main.css">
+    <!-- css -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css"
+    />
+    <link rel="stylesheet" href="./css/common.css" />
+    <link rel="stylesheet" href="./css/header.css" />
+    <link rel="stylesheet" href="./css/main.css" />
 
-  <title>먹을텐데~</title>
-</head>
+    <title>먹을텐데~</title>
+  </head>
 
-<body>
-  <div id="root">
-    <!-- header -->
-    <header class="header">
-      <a href="#" class="logo" onclick="route(event)">먹을텐데</a>
-      <div class="header__end">
-        <a href="#write" onclick="route(event)">글쓰기</a>
-        <a href="#login" onclick="route(event)">로그인</a>
-      </div>
-    </header>
+  <body>
+    <div id="root">
+      <!-- header -->
+      <header class="header">
+        <a href="#" class="logo" onclick="route(event)">먹을텐데</a>
+        <div class="header__end">
+          <a href="#write" onclick="route(event)">글쓰기</a>
+          <a href="#login" onclick="route(event)">로그인</a>
+        </div>
+      </header>
 
-    <!-- 각 라우터로 지정한 페이지 보여지는 영역 -->
-    <section id="component__page"></section>
-  </div>
+      <!-- 각 라우터로 지정한 페이지 보여지는 영역 -->
+      <section id="component__page"></section>
+    </div>
 
-  <script src="js/main.js" type="module"></script>
-</body>
-
+    <script src="js/main.js" type="module"></script>
+    <script src="js/post.js" type="module"></script>
+  </body>
 </html>
