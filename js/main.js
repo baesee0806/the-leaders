@@ -1,5 +1,6 @@
 // import { authService } from "./firebase.js";
 import { handleLocation } from "./router.js";
+import { urlClip } from "./Particularity.js";
 
 // hash url 변경 시 처리
 window.addEventListener("hashchange", handleLocation);
@@ -8,3 +9,4 @@ document.addEventListener("DOMContentLoaded", handleLocation);
 
 // 전역함수 리스트 
 window.route = route;
+window.urlClip = urlClip;
