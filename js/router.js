@@ -22,10 +22,3 @@ export const handleLocation = async () => {
 
   document.getElementById("component__page").innerHTML = html;
 };
-
-
-// hash url 변경 시 처리
-window.addEventListener("hashchange", handleLocation);
-window.route = route;
-// 첫 랜딩 또는 새로고침 시 처리
-document.addEventListener("DOMContentLoaded", handleLocation);
