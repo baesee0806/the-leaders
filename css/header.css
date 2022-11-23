@@ -12,6 +12,7 @@
   border-bottom: 1px solid #000;
 }
 
+/* 로그아웃시 보이는 헤더  */
 .header .logo {
   margin-left: 50px;
   font-size: 25px;
@@ -24,4 +25,19 @@
 
 .header .header__end a:first-child {
   margin-right: 20px;
+}
+
+/* 로그인시 보이는 헤더 */
+.header__end--logout {
+  display: none;
+  margin-right: 50px;
+}
+.header__end--logout a {
+  margin-left: 20px;
+}
+
+.header__end--logout .profile__image {
+  background-color: yellow;
+  width: 100px;
+  height: 100px;
 }
