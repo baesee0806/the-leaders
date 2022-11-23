@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
   <link rel="stylesheet" href="./css/common.css">
   <link rel="stylesheet" href="./css/header.css">
-  <link rel="stylesheet" href="./css/main.css">
+  <link rel="stylesheet" href="./css/mainpage.css">
 
   <title>먹을텐데~</title>
 </head>
@@ -25,13 +25,16 @@
     <header class="header">
       <a href="#" class="logo" onclick="route(event)">먹을텐데</a>
       <div class="header__end">
-        <a href="#write" onclick="route(event)">글쓰기</a>
-        <a href="#login" onclick="route(event)">로그인</a>
+        <a href="#login" onclick="toWrite()">글쓰기</a>
+        <a href="#login" id="login" onclick="route(event)">로그인</a>
       </div>
       <div class="header__end--logout">
         <a href="#write" onclick="route(event)">글쓰기</a>
         <a href="#" onclick="route(event); toLogout();">로그아웃</a>
-        <a href="#profile" onclick="route(event)" class="profile__image">프로필사진</a>
+        <label for="profile__image" onclick="goToProfile()">
+          <img id="profile__image" src="https://item.kakaocdn.net/do/493188dee481260d5c89790036be0e66f604e7b0e6900f9ac53a43965300eb9a"
+            alt="">
+        </label>
       </div>
     </header>
 
