@@ -1,4 +1,4 @@
-import { authService } from "./firebase.js";
+// import { authService } from "./firebase.js";
 
 export const route = (event) => {
   event.preventDefault();
