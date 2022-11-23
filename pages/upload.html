@@ -1,0 +1,27 @@
+<section class="post-main">
+    <div class="post-img">
+        <input id="image" type="file">
+    </div>
+    <div class="post-input">
+        <div class="post-category">
+            <div>
+                <input name="post-style" id="category" type="radio" value="post-korean">한식</option>
+                <input name="post-style" id="category" type="radio" value="post-chinese">중식</option>
+                <input name="post-style" id="category" type="radio" value="post-western">양식</option>
+                <input name="post-style" id="category" type="radio" value="post-japanese">일식</option>
+                <input name="post-style" id="category" type="radio" value="post-etc">기타</option>
+            </div>
+        </div>
+        <div class="post-title">
+            <input id="title" type="text" placeholder="제목을 입력해 주세요">
+        </div>
+        <div class="post-content">
+            <textarea name="" id="content" cols="80" rows="10" placeholder="내용을 입력해 주세요"></textarea>
+        </div>
+        <input type="text" class="" id="score" placeholder="평점">
+
+        <div class="post-submit">
+            <input onclick="uploading()" id="send" type="button" value="등록">
+        </div>
+    </div>
+</section>

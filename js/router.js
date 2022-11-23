@@ -6,7 +6,7 @@ export const route = (event) => {
 const routes = {
   404: "/pages/404.html",
   '/': "/pages/mainpage.html",
-  write: "/pages/write.html",
+  upload: "/pages/upload.html",
   login: "/pages/login.html",
   profile: "/pages/profile.html"
 };

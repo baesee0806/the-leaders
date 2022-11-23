@@ -1,7 +1,7 @@
 // import { authService } from "./firebase.js";
-import { route , handleLocation } from "./router.js";
-import { onToggle , toLogout , toWrite , goToProfile } from "./header.js";
-
+import { route, handleLocation } from "./router.js";
+import { onToggle, toLogout, toWrite, goToProfile } from "./header.js";
+import { uploading } from "./upload.js";
 // hash url 변경 시 처리
 window.addEventListener("hashchange", handleLocation);
 // 첫 랜딩 또는 새로고침 시 처리
@@ -13,3 +13,4 @@ window.onToggle = onToggle;
 window.toLogout = toLogout;
 window.toWrite = toWrite;
 window.goToProfile = goToProfile;
+window.uploading = uploading;
