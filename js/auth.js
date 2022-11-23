@@ -20,16 +20,26 @@ export function handleAuth(event){
     event.preventDefault()
     const signUpEmail = document.getElementById('signup__email').value
     const signUpPassword = document.getElementById('signup__pw').value
-    const signUpNickname = document.getElementById('signup__pw').value
+    // const signUpNickname = document.getElementById('signup__nick').value
 
-    createUserWithEmailAndPassword(authService, signUpEmail, signUpPassword,signUpNickname)
+    createUserWithEmailAndPassword(authService, signUpEmail, signUpPassword)
         .then((userCredential) => {
 
-            console.log(userCredential)
-            const user = userCredential.user;
-            window.location.hash = "/";
+          // 회원가입 시 입력한 닉네임 DB에 저장하기
+          const signUpNickname = document.getElementById('signup__nick').value
+          authService.currentUser.displayName = signUpNickname;
+          
+          // 이건 실패
+          // const signUpNickname = authService.currentUser.displayName;
+          // document.getElementById("signup__nick").value = signUpNickname;
 
-            console.log(user)
+
+
+          console.log(userCredential)
+          const user = userCredential.user;
+          window.location.hash = "/";
+
+          console.log(user)
          
         })
         .catch((error) => {

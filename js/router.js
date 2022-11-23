@@ -1,4 +1,4 @@
-// import { authService } from "./firebase.js";
+import { authService } from "./firebase.js";
 
 export const route = (event) => {
   event.preventDefault();
@@ -7,9 +7,10 @@ export const route = (event) => {
 
 const routes = {
   404: "/pages/404.html",
-  '/': "/pages/main.html",
+  '/': "/pages/mainpage.html",
   write: "/pages/write.html",
   login: "/pages/login__page.html",
+  profile: "/pages/profile.html",
   membership:"/pages/membership.html",
 };
 
@@ -24,6 +25,20 @@ export const handleLocation = async () => {
   const html = await fetch(route).then((data) => data.text());
 
   document.getElementById("component__page").innerHTML = html;
+
+  // 현재 띄워진 화면에서만 DOM 조작 가능
+  // 꼭 handleLocation 안에서 if문으로 path(어떤 화면인지)를 선택해야 함
+  if (path === "profile") {
+    console.log(authService)
+
+    // 프로필 관리 화면일 때 현재 프로필 사진, 닉네임, 이메일 주소 띄우기
+    document.getElementById("profileView").src =
+      authService.currentUser.photoURL ?? "/assets/blankProfile.webp";
+    document.getElementById("profileNickname_val").textContent =
+      authService.currentUser.displayName ?? "닉네임 없음";
+    document.getElementById("profileEmail").textContent =
+      authService.currentUser.email ?? "이메일 없음";  
+  };
 };
 
 

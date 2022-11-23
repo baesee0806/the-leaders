@@ -1,8 +1,7 @@
 import { authService } from "./firebase.js";
-import { socialLogin } from "./auth.js";
-import { logout } from "./auth.js";
 import { handleLocation,route } from "./router.js";
-import { handleAuth } from "./auth.js"
+import { handleAuth, socialLogin, logout  } from "./auth.js"
+import { changeProfileImage, changeProfileNickname, onFileChange, nicknameBtn } from "./profile.js";
 
 // hash url 변경 시 처리
 window.addEventListener("hashchange", handleLocation);
@@ -18,7 +17,15 @@ document.addEventListener("DOMContentLoaded",  () => {
       if (user) {
         // 로그인 상태이므로 항상 팬명록 화면으로 이동
         document.querySelector('#log__inout').innerText = '로그아웃'
-    
+
+        //alert("로그인 상태");
+        // 이미지, 닉네임 변경 시 업데이트 해주는 역할
+        document.getElementById("profileView").src =
+          user.auth.currentUser.photoURL || "/assets/blankProfile.webp";
+        document.getElementById("profileNickname_val").textContent =
+          user.auth.currentUser.displayName || "닉네임 없음";
+        document.getElementById("profileEmail").textContent =
+          user.email ?? "이메일 없음";     
     } else {
         // 로그아웃 상태이므로 로그인 화면으로 강제 이동
         
@@ -38,3 +45,9 @@ window.route = route;
 window.handleAuth = handleAuth;
 window.socialLogin = socialLogin;
 window.logout = logout
+
+window.onFileChange = onFileChange;
+window.changeProfileImage = changeProfileImage;
+window.changeProfileNickname = changeProfileNickname;
+window.nicknameBtn = nicknameBtn;
+window.handleLocation = handleLocation;
