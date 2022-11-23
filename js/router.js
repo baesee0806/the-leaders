@@ -8,6 +8,7 @@ const routes = {
   '/': "/pages/mainpage.html",
   write: "/pages/write.html",
   login: "/pages/login.html",
+  profile: "/pages/profile.html",
 };
 
 export const handleLocation = async () => {
