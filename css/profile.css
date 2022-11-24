@@ -8,6 +8,10 @@ h1 {
      font-weight: bold;
 }
 
+strong {
+     font-weight: bold;
+}
+
 .wrap {
      display: block;
      justify-content: center;
@@ -153,7 +157,7 @@ h1 {
 
 .profile__name-btn {
      position: absolute;
-     bottom: 33px;
+     bottom: 40px;
      right: 0;
 
      height: 35px;
@@ -182,6 +186,14 @@ h1 {
 
 .profile__mail-val {
      padding: 10px 0 10px 2px;
+
+}
+
+
+/* 미디어쿼리 */
+@media (max-width: 768px) {
+
+
 
 }
 
