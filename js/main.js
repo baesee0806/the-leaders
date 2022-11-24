@@ -1,7 +1,7 @@
 import { authService } from "./firebase.js";
 import { route , handleLocation } from "./router.js";
-import { onToggle , toLogout , toWrite } from "./header.js";
-import { handleAuth, socialLogin,   } from "./auth.js"
+// import { onToggle , toLogout , toWrite } from "./header.js";
+import { handleAuth, socialLogin,logout  } from "./auth.js"
 import { changeProfileImage, changeProfileNickname, onFileChange, nicknameBtn } from "./profile.js";
 
 // hash url 변경 시 처리
@@ -18,18 +18,20 @@ document.addEventListener("DOMContentLoaded",  () => {
       if (user) {
         // 로그인 상태이므로 항상 팬명록 화면으로 이동
         // document.querySelector('#log__inout').innerText = '로그아웃'
-
+        window.location.hash="/"
+        document.querySelector(".header__end").style.display = 'none'
+        document.querySelector(".header__end--logout").style.display = 'inline'
         //alert("로그인 상태");
         // 이미지, 닉네임 변경 시 업데이트 해주는 역할
-        document.getElementById("profileView").src =
-          user.auth.currentUser.photoURL || "/assets/blankProfile.webp";
-        document.getElementById("profileNickname_val").textContent =
-          user.auth.currentUser.displayName || "닉네임 없음";
-        document.getElementById("profileEmail").textContent =
-          user.email ?? "이메일 없음";     
+        // document.getElementById("profileView").src =
+        //   user.auth.currentUser.photoURL || "/assets/blankProfile.webp";
+        // document.getElementById("profileNickname_val").textContent =
+        //   user.auth.currentUser.displayName || "닉네임 없음";
+        // document.getElementById("profileEmail").textContent =
+        //   user.email ?? "이메일 없음";     
     } else {
         // 로그아웃 상태이므로 로그인 화면으로 강제 이동
-        
+        window.location.hash="/"
       }
     });
   });
@@ -43,12 +45,12 @@ document.addEventListener("DOMContentLoaded",  () => {
 
 // 전역함수 리스트 
 window.route = route;
-window.onToggle = onToggle;
-window.toLogout = toLogout;
-window.toWrite = toWrite;
+// window.onToggle = onToggle;
+// window.toLogout = toLogout;
+// window.toWrite = toWrite;
 window.handleAuth = handleAuth;
 window.socialLogin = socialLogin;
-window.logout = logout
+window.logout = logout;
 
 window.onFileChange = onFileChange;
 window.changeProfileImage = changeProfileImage;

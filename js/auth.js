@@ -5,8 +5,6 @@ import { authService } from "./firebase.js";
 
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.9.0/firebase-auth.js";
 import {
-    // createUserWithEmailAndPassword,
-    // signInWithEmailAndPassword,
     GoogleAuthProvider,
     signInWithPopup,
     GithubAuthProvider,
@@ -16,7 +14,7 @@ import {
 
 export function handleAuth(event){
     if(document.querySelector('#signup__btn').innerText === '가입하기'){
-
+      
     event.preventDefault()
     const signUpEmail = document.getElementById('signup__email').value
     const signUpPassword = document.getElementById('signup__pw').value
@@ -80,7 +78,7 @@ export function handleAuth(event){
       return;
     }
     //로그인
-
+    console.log("로그인이에요")
     event.preventDefault()
     const signInEmail = document.getElementById('signin__email').value
     const signInPassword = document.getElementById('signin__pw').value
@@ -88,9 +86,10 @@ export function handleAuth(event){
         .then((userCredential) => {
             const user = userCredential.user;
             console.log(userCredential)
-            window.location.hash = "/";
+            window.location.href = "/";
             // document.querySelector('#log__inout').innerText = '로그아웃'
-
+            headerEndEl.style.display = 'none'
+            headerEndLogoutEl.style.display = 'inline'
 
 
         })
@@ -121,18 +120,19 @@ export const socialLogin = (str) => {
       });
   };
 
-  // export const logout = () => {
-  //   signOut(authService)
-  //     .then(() => {
-  //       // Sign-out successful.
-  //       localStorage.clear();
-  //       console.log("로그아웃 성공");
-  //       document.querySelector('#log__inout').innerText = '로그인'
-  //       window.location.hash = "/"
-  //   })
-  //     .catch((error) => {
-  //       // An error happened.
-  //       console.log("error:", error);
-  //     });
-  // };
+  export const logout = () => {
+    signOut(authService)
+      .then(() => {
+        // Sign-out successful.
+        localStorage.clear();
+        console.log("로그아웃 성공");
+        window.location.href = "/"
+        headerEndEl.style.display = 'inline'
+        headerEndLogoutEl.style.display = 'none'
+    })
+      .catch((error) => {
+        // An error happened.
+        console.log("error:", error);
+      });
+  };
   

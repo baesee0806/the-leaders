@@ -28,29 +28,28 @@
     <title>먹을텐데~</title>
   </head>
 
-<body>
-  <div id="root">
-    <!-- header -->
-    <header class="header">
-      <a href="#" class="logo" onclick="route(event)">먹을텐데</a>
-      <div class="header__end">
-        <a href="#write" onclick="route(event)">글쓰기</a>
-        <a href="#login" onclick="route(event)">로그인</a>
-      </div>
-      <div class="header__end--logout">
-        <a href="#write" onclick="route(event)">글쓰기</a>
-        <a href="#" onclick="route(event); toLogout();">로그아웃</a>
-        <a href="#profile" onclick="route(event)" class="profile__image">프로필사진</a>
-      </div>
-    </header>
+  <body>
+    <div id="root">
+      <!-- header -->
+      <header class="header">
+        <a href="#" class="logo" onclick="route(event)">먹을텐데</a>
+        <div class="header__end">
+          <a href="#write" onclick="route(event)">글쓰기</a>
+          <a href="#login" onclick="route(event)">로그인</a>
+        </div>
+        <div class="header__end--logout">
+          <a href="#write" onclick="route(event)">글쓰기</a>
+          <a href="#" onclick="route(event);logout(); ">로그아웃</a>
+          <a href="#profile" onclick="route(event)" class="profile__image"
+            >프로필사진</a
+          >
+        </div>
+      </header>
 
       <!-- 각 라우터로 지정한 페이지 보여지는 영역 -->
       <section id="component__page"></section>
     </div>
-
-    
   </body>
   <script src="js/main.js" type="module"></script>
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
 </html>
