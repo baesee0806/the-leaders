@@ -121,18 +121,18 @@ export const socialLogin = (str) => {
       });
   };
 
-  export const logout = () => {
-    signOut(authService)
-      .then(() => {
-        // Sign-out successful.
-        localStorage.clear();
-        console.log("로그아웃 성공");
-        document.querySelector('#log__inout').innerText = '로그인'
-        window.location.hash = "/"
-    })
-      .catch((error) => {
-        // An error happened.
-        console.log("error:", error);
-      });
-  };
+  // export const logout = () => {
+  //   signOut(authService)
+  //     .then(() => {
+  //       // Sign-out successful.
+  //       localStorage.clear();
+  //       console.log("로그아웃 성공");
+  //       document.querySelector('#log__inout').innerText = '로그인'
+  //       window.location.hash = "/"
+  //   })
+  //     .catch((error) => {
+  //       // An error happened.
+  //       console.log("error:", error);
+  //     });
+  // };
   

@@ -1,7 +1,7 @@
 import { authService } from "./firebase.js";
 import { route , handleLocation } from "./router.js";
 import { onToggle , toLogout , toWrite } from "./header.js";
-import { handleAuth, socialLogin, logout  } from "./auth.js"
+import { handleAuth, socialLogin,   } from "./auth.js"
 import { changeProfileImage, changeProfileNickname, onFileChange, nicknameBtn } from "./profile.js";
 
 // hash url 변경 시 처리
@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded",  () => {
     //   const hash = window.location.hash;
       if (user) {
         // 로그인 상태이므로 항상 팬명록 화면으로 이동
-        document.querySelector('#log__inout').innerText = '로그아웃'
+        // document.querySelector('#log__inout').innerText = '로그아웃'
 
         //alert("로그인 상태");
         // 이미지, 닉네임 변경 시 업데이트 해주는 역할
@@ -34,11 +34,11 @@ document.addEventListener("DOMContentLoaded",  () => {
     });
   });
 
-  document.querySelector('#log__inout').addEventListener('click',()=> {
-    if( document.querySelector('#log__inout').innerText === '로그아웃'){
-        logout()
-    }
-  })
+  // document.querySelector('#log__inout').addEventListener('click',()=> {
+  //   if( document.querySelector('#log__inout').innerText === '로그아웃'){
+  //       logout()
+  //   }
+  // })
 
 
 // 전역함수 리스트 
