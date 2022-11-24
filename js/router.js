@@ -32,3 +32,4 @@ window.addEventListener("hashchange", handleLocation);
 window.route = route;
 // 첫 랜딩 또는 새로고침 시 처리
 document.addEventListener("DOMContentLoaded", handleLocation);
+
