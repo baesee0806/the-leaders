@@ -20,7 +20,10 @@ export const getPostContent = async () => {
   const postContainer = document.getElementById("component__page");
   postContainer.innerHTML = "";
   const q = query(
-    collection(dbService, "upload") //클릭한 게시물을 post를 통해 가져온다.
+    collection(dbService, "upload"),
+    where("제목", "==", "1")
+    //클릭한 게시물을 post를 통해 져온다.
+    // orderBy("createAt", "")
   );
   const querySnapshot = await getDocs(q);
   querySnapshot.forEach((doc) => {
@@ -33,16 +36,22 @@ export const getPostContent = async () => {
       creatorProfileImg,
       내용,
       postUrl,
+      카테고리,
     } = data;
-    console.log(
-      "🚀 ~ file: post.js ~ line 22 ~ querySnapshot.forEach ~ data",
-      data
-    );
+
+    // if (querySnapshot.exists) {
+    //   for (let doc in querySnapshot.data()) {
+    //     console.log(`key:${doc}, value : ${querySnapshot.data()[doc]}`);
+    //   }
+    // } else {
+    //   console.log("No such document!");
+    // }
     const html = `
   <article class="foodContent__wrap">
     <section class="foodContent__post-Header">
       <section class="foodContent__get-title">
         ${제목}
+        <span>( 카테고리 : ${카테고리} )</span>
       </section>
     </section>
     <!-- 프로필 이미지 닉네임 작성시간 -->
@@ -57,7 +66,6 @@ export const getPostContent = async () => {
       
 
       <div class="foodContent__user-Name">${creatorNickname}</div>
-      <!-- 5분전, 1시간전, 5일전 표현 고려 -->
       <div class="foodContent__register-Date">작성일 : ${작성일}</div>
     </div>
     <!--현재 페이지 URL을 로드-->
@@ -98,7 +106,7 @@ export const getPostContent = async () => {
     <textarea class="comment" placeholder="댓글을 입력해주세요 :)"></textarea>
     <!-- 댓글 수정, 삭제 -->
     <div class="comment__btn-wrap">
-      <button type="button" class="comment__sumit">작성</button>
+      <button onclick="save_comment(event)" type="button" class="comment__sumit">작성</button>
       <button type="button" class="comment__del">삭제</button>
     </div>
   </article>
