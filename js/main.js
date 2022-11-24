@@ -5,6 +5,10 @@ import { uploading } from "./upload.js";
 import { handleAuth, socialLogin,logout  } from "./auth.js"
 import { changeProfileImage, changeProfileNickname, onFileChange, nicknameBtn } from "./profile.js";
 
+// import { authService } from "./firebase.js";
+import { handleLocation } from "./router.js";
+import { urlClip, topFunction, scrollFunction  } from "./Particularity.js";
+import { getPostContent } from "./post.js";
 
 // hash url 변경 시 처리
 window.addEventListener("hashchange", handleLocation);
@@ -62,3 +66,9 @@ window.handleLocation = handleLocation;
 
 // window.goToProfile = goToProfile;
 window.uploading = uploading;
+// 전역함수 리스트
+window.route = route;
+window.urlClip = urlClip;
+window.topFunction = topFunction;
+window.scrollFunction = scrollFunction;
+window.getPostContent = getPostContent;
