@@ -20,14 +20,14 @@ export const getPostContent = async () => {
   const postContainer = document.getElementById("component__page");
   postContainer.innerHTML = "";
   const q = query(
-    collection(dbService, "post") //클릭한 게시물을 post를 통해 가져온다.
+    collection(dbService, "upload") //클릭한 게시물을 post를 통해 가져온다.
   );
   const querySnapshot = await getDocs(q);
   querySnapshot.forEach((doc) => {
     const data = doc.data();
     const {
-      postTitle,
-      createdAt,
+      createdTitle,
+      creatAt,
       creatorId,
       creatorNickname,
       creatorProfileImg,
@@ -42,7 +42,7 @@ export const getPostContent = async () => {
   <article class="foodContent__wrap">
     <section class="foodContent__post-Header">
       <section class="foodContent__get-title">
-        ${postTitle}
+        ${createdTitle}
       </section>
     </section>
     <!-- 프로필 이미지 닉네임 작성시간 -->
@@ -50,14 +50,15 @@ export const getPostContent = async () => {
       <div>
         <img
           class="foodContent__user-img"
-          src="${creatorProfileImg}.png"
+          src="${creatorProfileImg}"
           alt="userimg"
         />
       </div>
+      
 
       <div class="foodContent__user-Name">${creatorNickname}</div>
       <!-- 5분전, 1시간전, 5일전 표현 고려 -->
-      <div class="foodContent__register-Date">작성일 : ${createdAt}</div>
+      <div class="foodContent__register-Date">작성일 : ${creatAt}</div>
     </div>
     <!--현재 페이지 URL을 로드-->
     <div class="foodContent__post-Url">
@@ -117,5 +118,3 @@ export const getPostContent = async () => {
 //   // doc.data() is never undefined for query doc snapshots
 //   console.log(doc.id, " => ", doc.data());
 // });
-
-console.log("포스트 상세 페이지입니다");

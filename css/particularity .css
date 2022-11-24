@@ -159,6 +159,7 @@ ul {
   text-align: center;
   margin-top: 30px;
   margin-bottom: 50px;
+  min-height: 1200px;
 }
 
 /* 게시글 좋아요, 수정, 삭제 */
