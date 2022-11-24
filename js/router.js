@@ -11,9 +11,9 @@ const routes = {
   '/': "/pages/mainpage.html",
   upload: "/pages/upload.html",
   login: "/pages/login__page.html",
-  profile: "/pages/profile.html",
   membership:"/pages/membership.html",
-  profile: "/pages/profile.html"
+  profile: "/pages/profile.html",
+  post: "/pages/particularity.html",
 };
 // www.mysite.com/#post 도착하면
 // "/pages/particularity.html" 보여주세요

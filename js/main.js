@@ -6,7 +6,6 @@ import { handleAuth, socialLogin,logout  } from "./auth.js"
 import { changeProfileImage, changeProfileNickname, onFileChange, nicknameBtn } from "./profile.js";
 
 // import { authService } from "./firebase.js";
-import { handleLocation } from "./router.js";
 import { urlClip, topFunction, scrollFunction  } from "./Particularity.js";
 import { getPostContent } from "./post.js";
 
@@ -37,7 +36,7 @@ document.addEventListener("DOMContentLoaded",  () => {
         //   user.email ?? "이메일 없음";     
     } else {
         // 로그아웃 상태이므로 로그인 화면으로 강제 이동
-        window.location.hash="/"
+        // window.location.hash="/"
       }
     });
   });

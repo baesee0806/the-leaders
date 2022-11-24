@@ -1,19 +1,14 @@
 import {
   doc,
-  addDoc,
-  updateDoc,
-  deleteDoc,
-  collection,
-  orderBy,
-  query,
-  getDocs,
+
   getDoc,
-  where,
+
 } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js";
-import { dbService, authService } from "./firebase.js";
+import { dbService} from "./firebase.js";
 
 window.addEventListener("DOMContentLoaded", () => {
   getPostContent();
+  
 });
 
 export const getPostContent = async () => {
