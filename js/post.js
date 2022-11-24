@@ -26,12 +26,12 @@ export const getPostContent = async () => {
   querySnapshot.forEach((doc) => {
     const data = doc.data();
     const {
-      createdTitle,
-      creatAt,
+      제목,
+      작성일,
       creatorId,
       creatorNickname,
       creatorProfileImg,
-      postBody,
+      내용,
       postUrl,
     } = data;
     console.log(
@@ -42,7 +42,7 @@ export const getPostContent = async () => {
   <article class="foodContent__wrap">
     <section class="foodContent__post-Header">
       <section class="foodContent__get-title">
-        ${createdTitle}
+        ${제목}
       </section>
     </section>
     <!-- 프로필 이미지 닉네임 작성시간 -->
@@ -58,7 +58,7 @@ export const getPostContent = async () => {
 
       <div class="foodContent__user-Name">${creatorNickname}</div>
       <!-- 5분전, 1시간전, 5일전 표현 고려 -->
-      <div class="foodContent__register-Date">작성일 : ${creatAt}</div>
+      <div class="foodContent__register-Date">작성일 : ${작성일}</div>
     </div>
     <!--현재 페이지 URL을 로드-->
     <div class="foodContent__post-Url">
@@ -82,7 +82,7 @@ export const getPostContent = async () => {
     <section class="foodContent__post-Content">
       <div class="foodContent__contents">
         <div>
-         ${postBody}
+         ${내용}
         </div>
       </div>
     </section>
