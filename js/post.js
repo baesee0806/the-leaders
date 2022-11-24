@@ -25,7 +25,15 @@ export const getPostContent = async () => {
   const querySnapshot = await getDocs(q);
   querySnapshot.forEach((doc) => {
     const data = doc.data();
-    const { postTitle, createdAt } = data;
+    const {
+      postTitle,
+      createdAt,
+      creatorId,
+      creatorNickname,
+      creatorProfileImg,
+      postBody,
+      postUrl,
+    } = data;
     console.log(
       "🚀 ~ file: post.js ~ line 22 ~ querySnapshot.forEach ~ data",
       data
@@ -42,19 +50,18 @@ export const getPostContent = async () => {
       <div>
         <img
           class="foodContent__user-img"
-          src="/img/file_copy_FILL0_wght400_GRAD0_opsz48.png"
+          src="${creatorProfileImg}.png"
           alt="userimg"
         />
-        <!-- 임의의 이미지를 넣었음 -->
       </div>
 
-      <div class="foodContent__user-Name">아무개</div>
+      <div class="foodContent__user-Name">${creatorNickname}</div>
       <!-- 5분전, 1시간전, 5일전 표현 고려 -->
       <div class="foodContent__register-Date">작성일 : ${createdAt}</div>
     </div>
     <!--현재 페이지 URL을 로드-->
     <div class="foodContent__post-Url">
-      <div id="Content-Url"></div>
+      <div id="Content-Url">${postUrl}</div>
       <div
         class="foodContent__post-Url-clip"
         onclick="urlClip(); return false;"
@@ -74,16 +81,7 @@ export const getPostContent = async () => {
     <section class="foodContent__post-Content">
       <div class="foodContent__contents">
         <div>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          pariatur sapiente voluptates, ex dolorum non aliquam nemo a dolor ut
-          aperiam facere accusamus consequuntur ducimus dolorem. Numquam eaque
-          aliquid atque. Lorem, ipsum dolor sit amet consectetur adipisicing
-          elit. Recusandae nihil eveniet nostrum illo dolorum dolorem nobis,
-          molestiae autem voluptatum cum quod assumenda quos animi repellat?
-          Iusto, obcaecati quas! Eveniet, nisi. Lorem ipsum dolor sit amet
-          consectetur adipisicing elit. Eveniet enim voluptatem dolores
-          praesentium a porro error nihil vel qui vero ad dolorem ullam magnam
-          eum hic exercitationem fuga, impedit culpa!
+         ${postBody}
         </div>
       </div>
     </section>

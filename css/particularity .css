@@ -53,7 +53,11 @@ ul {
   list-style: none;
   direction: none;
 }
-
+@media(max-width: 1300px){
+  .post__side-bar{
+    display: none;
+  }
+  }
 .post__side-bar {
   position: sticky;
   max-width: 300px;
@@ -76,10 +80,7 @@ ul {
 
 }
 .post__side-bar ul.post__side-bar-list {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
+  margin-top: 20px;
 }
 
 .post__side-bar-list li a {
@@ -156,6 +157,8 @@ ul {
 }
 .foodContent__post-Content {
   text-align: center;
+  margin-top: 30px;
+  margin-bottom: 50px;
 }
 
 /* 게시글 좋아요, 수정, 삭제 */
