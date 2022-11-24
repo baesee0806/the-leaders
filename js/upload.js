@@ -1,23 +1,5 @@
-// Import the functions you need from the SDKs you need
-import {
-    ref,
-    uploadString,
-    getDownloadURL,
-    deleteObject
-} from "https://www.gstatic.com/firebasejs/9.14.0/firebase-storage.js";
-
-import {
-    doc,
-    addDoc,
-    updateDoc,
-    deleteDoc,
-    collection,
-    orderBy,
-    query,
-    getDocs,
-} from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js";
-
-
+import { addDoc, setDoc, doc, collection } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js";
+import { dbService, authService } from "./firebase.js";
 
 
 export const uploading = async (event) => {

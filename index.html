@@ -5,18 +5,25 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <!-- google font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 
+  <!-- fontawesome font -->	
+  <script src="https://kit.fontawesome.com/a4c06b86b3.js" crossorigin="anonymous"></script>
+  
   <!-- css -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
   <link rel="stylesheet" href="./css/common.css">
   <link rel="stylesheet" href="./css/header.css">
-  <link rel="stylesheet" href="./css/main.css">
+  <link rel="stylesheet" href="./css/profile.css">
+  <link rel="stylesheet" href="./css/mainpage.css">
   <link rel="stylesheet" href="./css/upload.css">
+  <link rel="stylesheet" href="./css/login__page.css">
 
+  <!-- jquery -->
   <script src="https://code.jquery.com/jquery-3.6.1.min.js"
     integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 
@@ -31,11 +38,11 @@
       <header class="header">
         <a href="#" class="logo" onclick="route(event)">먹을텐데</a>
         <div class="header__end">
-          <a href="#write" onclick="route(event)">글쓰기</a>
+          <a href="#upload" onclick="route(event)">글쓰기</a>
           <a href="#login" onclick="route(event)">로그인</a>
         </div>
         <div class="header__end--logout">
-          <a href="#write" onclick="route(event)">글쓰기</a>
+          <a href="#upload" onclick="route(event)">글쓰기</a>
           <a href="#" onclick="route(event);logout(); ">로그아웃</a>
           <a href="#profile" onclick="route(event)" class="profile__image"
             >프로필사진</a
