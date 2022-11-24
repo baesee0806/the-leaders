@@ -1,0 +1,61 @@
+
+  .post-main {
+    width: 80%;
+    border: 1px solid blue;
+    height: 90vh;
+    margin: auto;
+  
+  }
+  
+  .post-back {
+    border: 1px solid red;
+  }
+  .post-main{
+    display: flex;
+    width: 95%;
+    height: 300px;
+  }
+  .post-category {
+    border: 1px solid red;
+  }
+  
+  .post-title {
+    border: 1px solid red;
+  }
+  
+  .post-title>input {
+    width: 90%;
+    font-size: 16px;
+  }
+  
+  .post-content {
+    border: 1px solid red;
+  }
+  
+  .post-content>textarea {
+    font-size: 16px;
+    width: 90%;
+    resize: none;
+  }
+  
+  .post-img {
+    border: 1px solid red;
+    width: 600px;
+  }
+  
+  .post-img>input {
+    border: 2px dotted green;
+    width: 100%;
+    height: 100%;
+    background-color: bisque;
+  }
+  
+  .post-submit{
+  border: 1px solid red;    
+  text-align: right;
+  }
+  .post-submit >input{
+    width: 100px;
+    height: 50px;
+    border: 3px solid blue
+  }

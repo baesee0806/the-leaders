@@ -1,5 +1,5 @@
 .main__wrapper {
-  height: 3000px;
+  /* height: 3000px; */
   display: flex;
   flex-wrap: wrap;
 }

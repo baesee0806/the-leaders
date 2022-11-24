@@ -5,7 +5,7 @@ const loginEl = document.querySelector('#login')
 
 export const onToggle = () => {
   headerEndEl.style.display = 'none'
-  headerEndLogoutEl.style.display = 'inline'
+  headerEndLogoutEl.style.display = 'flex'
   window.location.hash = "#";  
 }
 
@@ -20,4 +20,8 @@ export const toWrite = () => {
   if (loginEl.innerText === '로그인') {
     return alert ('로그인을 먼저 하세요')
   }
+}
+
+export const goToProfile = () => {
+  window.location.hash = '#profile';
 }

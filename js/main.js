@@ -1,8 +1,10 @@
-import { authService } from "./firebase.js";
+// import { authService } from "./firebase.js";
 import { route , handleLocation } from "./router.js";
 // import { onToggle , toLogout , toWrite } from "./header.js";
+import { uploading } from "./upload.js";
 import { handleAuth, socialLogin,logout  } from "./auth.js"
 import { changeProfileImage, changeProfileNickname, onFileChange, nicknameBtn } from "./profile.js";
+
 
 // hash url 변경 시 처리
 window.addEventListener("hashchange", handleLocation);
@@ -45,9 +47,9 @@ document.addEventListener("DOMContentLoaded",  () => {
 
 // 전역함수 리스트 
 window.route = route;
-// window.onToggle = onToggle;
-// window.toLogout = toLogout;
-// window.toWrite = toWrite;
+window.onToggle = onToggle;
+window.toLogout = toLogout;
+window.toWrite = toWrite;
 window.handleAuth = handleAuth;
 window.socialLogin = socialLogin;
 window.logout = logout;
@@ -57,3 +59,6 @@ window.changeProfileImage = changeProfileImage;
 window.changeProfileNickname = changeProfileNickname;
 window.nicknameBtn = nicknameBtn;
 window.handleLocation = handleLocation;
+
+window.goToProfile = goToProfile;
+window.uploading = uploading;

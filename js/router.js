@@ -8,10 +8,11 @@ export const route = (event) => {
 const routes = {
   404: "/pages/404.html",
   '/': "/pages/mainpage.html",
-  write: "/pages/write.html",
+  upload: "/pages/upload.html",
   login: "/pages/login__page.html",
   profile: "/pages/profile.html",
   membership:"/pages/membership.html",
+  profile: "/pages/profile.html"
 };
 
 export const handleLocation = async () => {
