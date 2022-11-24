@@ -7,6 +7,7 @@ import {
   orderBy,
   query,
   getDocs,
+  getDoc,
   where,
 } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js";
 import { dbService, authService } from "./firebase.js";
@@ -19,39 +20,41 @@ export const getPostContent = async () => {
   let createdObjpost = []; //작성했던 게시글 이라는 배열을 생성
   const postContainer = document.getElementById("component__page");
   postContainer.innerHTML = "";
-  const q = query(
-    collection(dbService, "upload"),
-    where("제목", "==", "1")
-    //클릭한 게시물을 post를 통해 져온다.
-    // orderBy("createAt", "")
-  );
-  const querySnapshot = await getDocs(q);
-  querySnapshot.forEach((doc) => {
-    const data = doc.data();
-    const {
-      제목,
-      작성일,
-      creatorId,
-      creatorNickname,
-      creatorProfileImg,
-      내용,
-      postUrl,
-      카테고리,
-    } = data;
 
-    // if (querySnapshot.exists) {
-    //   for (let doc in querySnapshot.data()) {
-    //     console.log(`key:${doc}, value : ${querySnapshot.data()[doc]}`);
-    //   }
-    // } else {
-    //   console.log("No such document!");
-    // }
-    const html = `
+  // const q = query(
+  //   collection(dbService, "upload"),
+  //   where("제목", "==", "1")
+  //   //클릭한 게시물을 post를 통해 져온다.
+  //   // orderBy("createAt", "")
+  // );
+  // const querySnapshot = await getDocs(q);
+  const docRef = doc(dbService, "post", "E8ZxOYSHUfSX9Z58QJse");
+  const docSnap = await getDoc(docRef);
+  docSnap.data();
+  console.log(docSnap.data());
+  const {
+    title,
+    kategory,
+    creatorNickname,
+    creatorProfileImg,
+    date,
+    postUrl,
+    content,
+  } = docSnap.data();
+
+  // if (querySnapshot.exists) {
+  //   for (let doc in querySnapshot.data()) {
+  //     console.log(`key:${doc}, value : ${querySnapshot.data()[doc]}`);
+  //   }
+  // } else {
+  //   console.log("No such document!");
+  // }
+  const html = `
   <article class="foodContent__wrap">
     <section class="foodContent__post-Header">
       <section class="foodContent__get-title">
-        ${제목}
-        <span>( 카테고리 : ${카테고리} )</span>
+        ${title}
+        <span>( 카테고리 : ${kategory} )</span>
       </section>
     </section>
     <!-- 프로필 이미지 닉네임 작성시간 -->
@@ -66,7 +69,7 @@ export const getPostContent = async () => {
       
 
       <div class="foodContent__user-Name">${creatorNickname}</div>
-      <div class="foodContent__register-Date">작성일 : ${작성일}</div>
+      <div class="foodContent__register-Date">작성일 : ${date}</div>
     </div>
     <!--현재 페이지 URL을 로드-->
     <div class="foodContent__post-Url">
@@ -90,7 +93,7 @@ export const getPostContent = async () => {
     <section class="foodContent__post-Content">
       <div class="foodContent__contents">
         <div>
-         ${내용}
+         ${content}
         </div>
       </div>
     </section>
@@ -112,11 +115,11 @@ export const getPostContent = async () => {
   </article>
     `;
 
-    const div = document.createElement("div");
-    div.innerHTML = html;
-    postContainer.appendChild(div);
-  });
-};
+  const div = document.createElement("div");
+  div.innerHTML = html;
+  postContainer.appendChild(div);
+  // });
+};;
 
 // const q = query(collection(dbService, "post"), where("createdId", "==", true));
 // // post라는 컬렉션의 문서 중 createdId이라는 key의 값이 true인 문서들만 담기
