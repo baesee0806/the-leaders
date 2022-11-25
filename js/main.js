@@ -8,6 +8,7 @@ import { changeProfileImage, changeProfileNickname, onFileChange, nicknameBtn } 
 // import { authService } from "./firebase.js";
 import { urlClip, topFunction, scrollFunction  } from "./Particularity.js";
 import { getPostContent, delete_comment } from "./post.js";
+import { editing } from "./edit.js";
 
 // hash url 변경 시 처리
 window.addEventListener("hashchange", handleLocation);
@@ -72,3 +73,7 @@ window.topFunction = topFunction;
 window.scrollFunction = scrollFunction;
 window.getPostContent = getPostContent;
 window.delete_comment = delete_comment;
+
+
+window.editing = editing;
+window.authService = authService;

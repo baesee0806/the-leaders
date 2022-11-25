@@ -1,0 +1,35 @@
+<!-- <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+    integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script> -->
+
+<div class="container mt-3">
+
+    <h1>수정하기</h1><br>
+    <section class="post-main">
+        <div class="post-img">
+            <input id="image" type="file">
+        </div>
+        <div class="upload-input">
+            <div class="upload-category">
+                <div>
+                    <input name="upload-style" id="category" type="radio" value="korean">한식</option>
+                    <input name="upload-style" id="category" type="radio" value="chinese">중식</option>
+                    <input name="upload-style" id="category" type="radio" value="western">양식</option>
+                    <input name="upload-style" id="category" type="radio" value="japanese">일식</option>
+                    <input name="upload-style" id="category" type="radio" value="etc">기타</option>
+                </div>
+            </div>
+            <div class="upload-title">
+                <input id="title" type="text" placeholder="제목을 입력해 주세요">
+            </div>
+            <div class="upload-content">
+                <textarea name="" id="content" cols="80" rows="10" placeholder="내용을 입력해 주세요"></textarea>
+            </div>
+            <input type="text" class="" id="score" placeholder="평점">
+
+            <div class="upload-submit">
+                <input onclick="editing(event)" id="send" type="button" value="수정">
+            </div>
+        </div>
+    </section>
+</div>
+<!-- <button onclick="editing(event)" class="btn btn-danger mt-3" id="send">수정완료</button>
