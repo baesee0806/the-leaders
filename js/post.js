@@ -7,34 +7,39 @@ import {
 import { dbService} from "./firebase.js";
 
 window.addEventListener("DOMContentLoaded", () => {
-  getPostContent();
-  
+  const hash = window.location.hash;
+  console.log(hash)
+  if (hash === "#post"){
+    getPostContent();
+  }
 });
 
 export const getPostContent = async () => {
-  let createdObjpost = []; //작성했던 게시글 이라는 배열을 생성
+  // let createdObjpost = []; //작성했던 게시글 이라는 배열을 생성
   const postContainer = document.getElementById("component__page");
   postContainer.innerHTML = "";
 
-  // const q = query(
-  //   collection(dbService, "upload"),
-  //   where("제목", "==", "1")
-  //   //클릭한 게시물을 post를 통해 져온다.
-  //   // orderBy("createAt", "")
-  // );
-  // const querySnapshot = await getDocs(q);
-  const docRef = doc(dbService, "post", "E8ZxOYSHUfSX9Z58QJse");
+  const docRef = doc(dbService, "post", "ixJkFRtDprdjGutyw5Cn");
   const docSnap = await getDoc(docRef);
   docSnap.data();
-  console.log(docSnap.data());
+  // console.log(docSnap.data());
+  
+    // const q = query(
+    //   collection(dbService, "upload"),
+    //   where("제목", "==", "1")
+    //   //클릭한 게시물을 post를 통해 져온다.
+    //   // orderBy("createAt", "")
+    // );
+    // const querySnapshot = await getDocs(q);
   const {
     title,
-    kategory,
+    category,
     creatorNickname,
     creatorProfileImg,
     date,
     postUrl,
     content,
+    contentImgUrl,
   } = docSnap.data();
 
   // if (querySnapshot.exists) {
@@ -49,7 +54,7 @@ export const getPostContent = async () => {
     <section class="foodContent__post-Header">
       <section class="foodContent__get-title">
         ${title}
-        <span>( 카테고리 : ${kategory} )</span>
+        <span>( 카테고리 : ${category} )</span>
       </section>
     </section>
     <!-- 프로필 이미지 닉네임 작성시간 -->
@@ -68,7 +73,8 @@ export const getPostContent = async () => {
     </div>
     <!--현재 페이지 URL을 로드-->
     <div class="foodContent__post-Url">
-      <div id="Content-Url">${postUrl}</div>
+      <div id="Content-Url">
+      ${postUrl}</div>
       <div
         class="foodContent__post-Url-clip"
         onclick="urlClip(); return false;"
@@ -87,7 +93,10 @@ export const getPostContent = async () => {
     <!-- 게시글 내용 란 -->
     <section class="foodContent__post-Content">
       <div class="foodContent__contents">
-        <div>
+      <div id="contentImgUrl">
+          <img style="background-image" src="${contentImgUrl}"/>
+          </div>
+        <div style >
          ${content}
         </div>
       </div>
@@ -96,7 +105,7 @@ export const getPostContent = async () => {
     <section>
       <div class="foodContent__btn-wrap">
         <button type="button" class="foodContent__post-like">공감해요</button>
-        <button type="button" class="foodContent__post-revert">수정</button>
+        <button type="button" class="foodContent__post-revert" onclick="route(event)">수정</button>
         <button type="button" class="foodContent__post-del">삭제</button>
       </div>
     </section>
@@ -110,9 +119,9 @@ export const getPostContent = async () => {
   </article>
     `;
 
-  const div = document.createElement("div");
-  div.innerHTML = html;
-  postContainer.appendChild(div);
+  const div = document.createElement("div"); //<component__page>...</component__page>을 생성
+  div.innerHTML = html; // div파일을 가져와서작업??
+  postContainer.appendChild(div); //<component__page>태그를 가진 div라는 변수가 postContainer내부에 생성
   // });
 };;
 

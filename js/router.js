@@ -20,6 +20,7 @@ const routes = {
 
 export const handleLocation = async () => {
   let path = window.location.hash.replace("#", ""); //#about -> about
+  console.log(path)
   // #post => post
   // "http://example.com/"가 아니라 도메인 뒤에 / 없이 "http://example.com" 으로 나오는 경우
   if (path.length === 0) {
