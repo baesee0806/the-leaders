@@ -1,7 +1,5 @@
-
-import { storageService } from "./firebase.js";
-import { dbService } from "./firebase.js";
-import { authService, dbService } from "./firebase.js";
+import { authService, dbService, storageService } from "./firebase.js";
+import { v4 as uuidv4 } from "https://jspm.dev/uuid";
 
 
 import {
@@ -23,8 +21,6 @@ import {
     query,
     getDocs,
 } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js";
-import { v4 as uuidv4 } from "https://jspm.dev/uuid";
-
 
 
 

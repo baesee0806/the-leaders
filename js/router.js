@@ -13,7 +13,7 @@ const routes = {
   login: "/pages/login__page.html",
   membership:"/pages/membership.html",
   profile: "/pages/profile.html",
-  post: "/pages/particularity.html",,
+  post: "/pages/particularity.html",
   edit:"/pages/edit.html",
 };
 // www.mysite.com/#post 도착하면
