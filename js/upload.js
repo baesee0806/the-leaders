@@ -1,27 +1,7 @@
-// // Import the functions you need from the SDKs you need
-// // Import the functions you need from the SDKs you need
-// import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
-// import { getAuth } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-auth.js";
-// import { getFirestore } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js";
-// import { getStorage} from "https://www.gstatic.com/firebasejs/9.14.0/firebase-storage.js";
+
 import { storageService } from "./firebase.js";
 import { dbService } from "./firebase.js";
 import { authService } from "./firebase.js";
-// // 아래 데이터는 본인의 Firebase 프로젝트 설정에서 확인할 수 있습니다.
-// const firebaseConfig = {
-//   apiKey: "AIzaSyB3MMTH8QP9Lkb0sV-LSdbxzhWvkEYtvJk",
-//   authDomain: "the-leaders-65e8b.firebaseapp.com",
-//   projectId: "the-leaders-65e8b",
-//   storageBucket: "the-leaders-65e8b.appspot.com",
-//   messagingSenderId: "64173971484",
-//   appId: "1:64173971484:web:429786c568e80ed13b27d9",
-// };
-
-// // Initialize Firebase
-// export const app = initializeApp(firebaseConfig);
-// export const dbService = getFirestore(app);
-// export const authService = getAuth(app);
-// export const storageService = getStorage(app);
 
 
 import {
@@ -43,6 +23,7 @@ import {
     query,
     getDocs,
 } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js";
+import { v4 as uuidv4 } from "https://jspm.dev/uuid";
 
 
 
@@ -50,7 +31,7 @@ import {
 export const uploading = async (event) => {
 
     const imgFile = document.querySelector('#image').files[0]
-    const storageRef = ref(storageService, 'image/' + imgFile.name)
+    const storageRef = ref(storageService, 'post_image/' + uuidv4())
     const uploadfile = uploadBytes(storageRef, imgFile)
     const uploadTask = uploadBytesResumable(storageRef, imgFile)
 
@@ -81,24 +62,24 @@ export const uploading = async (event) => {
                 const title = document.getElementById("title")
                 const content = document.getElementById("content");
                 const score = document.getElementById("score")
-                const { uid, photoURL, displayName } = authService.currnetUser
+                // const { uid, displayName } = authService.currnetUser
 
                 const today = new Date();
                 const year = today.getFullYear();
                 const month = ('0' + (today.getMonth() + 1)).slice(-2);
                 const day = ('0' + today.getDate()).slice(-2);
-                const dateString = year + '-' + month + '-' + day;
+                const dateString = year + month + day;
 
                 try {
                     addDoc(collection(dbService, "post"), {
-                        카테고리: category.value,
-                        제목: title.value,
-                        내용: content.value,
-                        평점: parseInt(score.value),
-                        작성일: parseInt(dateString),
-                        작성자: uid,
-                        이미지: photoURL,
-                        닉네임: displayName
+                        category: category.value,
+                        title: title.value,
+                        content: content.value,
+                        score: parseInt(score.value),
+                        date: parseInt(dateString),
+                        // uid: uid,
+                        postUrl: photoURL,
+                        // nickname: displayName
 
                     });
                     alert("등록완료");

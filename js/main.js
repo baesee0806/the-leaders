@@ -2,7 +2,7 @@ import { authService } from "./firebase.js";
 import { route, handleLocation } from "./router.js";
 import { onToggle, toLogout, toWrite, goToProfile } from "./header.js";
 import { uploading } from "./upload.js";
-// import {saveContent} from "./upload.js";
+import { editing } from "./edit.js";
 
 // hash url 변경 시 처리
 window.addEventListener("hashchange", handleLocation);
@@ -16,4 +16,5 @@ window.toLogout = toLogout;
 window.toWrite = toWrite;
 window.goToProfile = goToProfile;
 window.uploading = uploading;
-// window.saveContent = saveContent;
+window.editing = editing;
+window.authService = authService;
