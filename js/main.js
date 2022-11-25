@@ -7,7 +7,7 @@ import { changeProfileImage, changeProfileNickname, onFileChange, nicknameBtn } 
 
 // import { authService } from "./firebase.js";
 import { urlClip, topFunction, scrollFunction  } from "./Particularity.js";
-import { getPostContent } from "./post.js";
+import { getPostContent, delete_comment } from "./post.js";
 
 // hash url 변경 시 처리
 window.addEventListener("hashchange", handleLocation);
@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded",  () => {
       if (user) {
         // 로그인 상태이므로 항상 팬명록 화면으로 이동
         // document.querySelector('#log__inout').innerText = '로그아웃'
-        window.location.hash="/"
+        // window.location.hash="/"
         document.querySelector(".header__end").style.display = 'none'
         document.querySelector(".header__end--logout").style.display = 'inline'
         //alert("로그인 상태");
@@ -71,3 +71,4 @@ window.urlClip = urlClip;
 window.topFunction = topFunction;
 window.scrollFunction = scrollFunction;
 window.getPostContent = getPostContent;
+window.delete_comment = delete_comment;

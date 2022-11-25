@@ -25,7 +25,7 @@ window.onscroll = function () {
 // 버튼 표시 조건 (40px 아래로 이동 시)
 export function scrollFunction() {
   let mybutton = document.getElementById("top__scroll-Btn");
-  console.log(window.scrollY);
+  // console.log(window.scrollY);
   if (window.scrollY > 40) {
     mybutton.style.display = "block";
   } else {

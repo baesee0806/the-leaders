@@ -2,6 +2,7 @@ import {
   doc,
 
   getDoc,
+  deleteDoc,
 
 } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js";
 import { dbService} from "./firebase.js";
@@ -23,7 +24,7 @@ export const getPostContent = async () => {
   //   // orderBy("createAt", "")
   // );
   // const querySnapshot = await getDocs(q);
-  const docRef = doc(dbService, "post", "E8ZxOYSHUfSX9Z58QJse");
+  const docRef = doc(dbService, "post", "7CrbCNXVf6mz3cJSzcD1");
   const docSnap = await getDoc(docRef);
   docSnap.data();
   console.log(docSnap.data());
@@ -68,7 +69,7 @@ export const getPostContent = async () => {
     </div>
     <!--현재 페이지 URL을 로드-->
     <div class="foodContent__post-Url">
-      <div id="Content-Url">${postUrl}</div>
+      <div id="Content-Url" style="background-image" src="${postUrl}" >${postUrl}</div>
       <div
         class="foodContent__post-Url-clip"
         onclick="urlClip(); return false;"
@@ -97,7 +98,7 @@ export const getPostContent = async () => {
       <div class="foodContent__btn-wrap">
         <button type="button" class="foodContent__post-like">공감해요</button>
         <button type="button" class="foodContent__post-revert">수정</button>
-        <button type="button" class="foodContent__post-del">삭제</button>
+        <button type="button" class="foodContent__post-del" onclick="delete_comment(event)">삭제</button>
       </div>
     </section>
     <!-- 댓글 창 -->
@@ -124,3 +125,23 @@ export const getPostContent = async () => {
 //   // doc.data() is never undefined for query doc snapshots
 //   console.log(doc.id, " => ", doc.data());
 // });
+
+// CRUD > Delete
+export const delete_comment = async (event) => {
+// 버튼 누를 때 기본값인 새로고침 막기
+event.preventDefault();
+console.log(event.target)
+// event.target은 삭제 버튼, event.target.name에 삭제하고자 하는 게시물의 id값이 들어있음
+// const id = event.target.name;
+const ok = window.confirm("해당 응원글을 정말 삭제하시겠습니까?");
+if (ok) {
+  try {
+    // firestore에 "comments" collection 내에서 해당 id값을 가진 doc을 찾아서 삭제
+    await deleteDoc(doc(dbService, "post", "1EFVHMbETdULteaRShCn"));
+    alert("삭제완료");
+    window.location.hash="/"
+  } catch (error) {
+    alert(error);
+  }
+}
+};

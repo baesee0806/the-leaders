@@ -13,12 +13,7 @@ export const changeProfileImage = async (event) => {
   // .disabled로 profileBtn 한 번만 클릭할 수 있도록 함 (한 번 클릭하면 비활성화됨)
   // document.getElementById("profileImageBtn").disabled = true;
 
-  const imgRef = ref(
-    storageService,
-    // Storage 안에 현재 유저 아이디(uid)로 폴더를 만들고 
-    // 파일명은 uuid(전세계 유일한 ID)로 설정
-    `${authService.currentUser.uid}/${uuidv4()}`
-  );
+  const imgRef = ref(storageService, "profile_image/" + uuidv4())
 
   const imgDataUrl = localStorage.getItem("imgDataUrl");
   let downloadUrl; //새로운 프로필 이미지 url
