@@ -1,3 +1,61 @@
+/* header 영역 */
+.header {
+  background-color: #fff;
+  position: fixed;
+  top: 0px;
+  z-index: 10;
+  width: 100%;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #000;
+}
+
+/* 로그아웃시 보이는 헤더  */
+.header .logo {
+  margin-left: 50px;
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.header .header__end {
+  margin-right: 50px;
+}
+
+.header .header__end a:first-child {
+  margin-right: 20px;
+}
+
+/* 로그인시 보이는 헤더 */
+.header__end--logout {
+  display: none;
+  margin-right: 50px;
+  justify-content: center;
+  align-items: center;
+}
+
+.header__end--logout a,
+.header__end--logout label {
+  margin-left: 20px;
+}
+
+.header__end--logout label {
+  cursor: pointer;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: 1px solid #000;
+  box-sizing: border-box;
+  padding: 2px;
+}
+
+.header__end--logout label img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
 * {
   box-sizing: inherit;
 }

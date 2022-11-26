@@ -1,9 +1,13 @@
 import { authService } from "./firebase.js";
-
+import { getpagelist } from "./mainpage.js"
 export const route = (event) => {
   event.preventDefault();
   window.location.hash = event.target.hash;
 };
+
+
+
+
 
 const routes = {
   // 키: 값
@@ -11,10 +15,10 @@ const routes = {
   '/': "/pages/mainpage.html",
   upload: "/pages/upload.html",
   login: "/pages/login__page.html",
-  membership:"/pages/membership.html",
+  membership: "/pages/membership.html",
   profile: "/pages/profile.html",
-  post: "/pages/particularity.html",
-  edit:"/pages/edit.html",
+  post: "/pages/post.html",
+  edit: "/pages/edit.html",
 };
 // www.mysite.com/#post 도착하면
 // "/pages/particularity.html" 보여주세요
@@ -27,14 +31,30 @@ export const handleLocation = async () => {
   if (path.length === 0) {
     path = "/";
   }
+  if (path.startsWith ("post")) {
+    getPostContent();
+    return;
+  }
+
   const route = routes[path] || routes[404];
   const html = await fetch(route).then((data) => data.text());
   document.getElementById("component__page").innerHTML = html;
+
+  if (path === "/") {
+    getpagelist()
+  }
+
+  // if (path === "post") {
+  //   getPostContent()
+  // }
+
 
   // 현재 띄워진 화면에서만 DOM 조작 가능
   // 꼭 handleLocation 안에서 if문으로 path(어떤 화면인지)를 선택해야 함
   if (path === "profile") {
     console.log(authService)
+
+
 
     // 프로필 관리 화면일 때 현재 프로필 사진, 닉네임, 이메일 주소 띄우기
     document.getElementById("profileView").src =
@@ -42,7 +62,7 @@ export const handleLocation = async () => {
     document.getElementById("profileNickname_val").textContent =
       authService.currentUser.displayName ?? "닉네임 없음";
     document.getElementById("profileEmail").textContent =
-      authService.currentUser.email ?? "이메일 없음";  
+      authService.currentUser.email ?? "이메일 없음";
   };
 };
 

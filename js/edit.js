@@ -17,15 +17,13 @@ import {
 
 
 
-
-
 export const editing = async (event) => {
 
 
     const 쿼리스트링 = new URLSearchParams(window.location.search)
-    console.log(쿼리스트링.get('id'))
+    console.log(쿼리스트링.get('uid'))
     
-    const docRef = doc(dbService, "post", "Uv30N3tKOIR5UUq3jgJw");
+    const docRef = doc(dbService, "post", "2DN8dm003RqugrU0eVhV");
     const docSnap = await getDoc(docRef);
     
     if (docSnap.exists()) {

@@ -54,11 +54,11 @@ export const uploading = async (event) => {
         () => {
             getDownloadURL(uploadTask.snapshot.ref).then((photoURL) => {
                 console.log('업로드된 경로는:', photoURL);
-                const category = document.getElementById("category")
-                const title = document.getElementById("title")
+                const category = document.getElementById("category");
+                const title = document.getElementById("title");
                 const content = document.getElementById("content");
-                const score = document.getElementById("score")
-                const { uid, displayName } = authService.currnetUser
+                const score = document.getElementById("score");
+                const { uid, displayName } = authService.currentUser;
 
                 const today = new Date();
                 const year = today.getFullYear();
@@ -73,12 +73,14 @@ export const uploading = async (event) => {
                         content: content.value,
                         score: parseInt(score.value),
                         date: parseInt(dateString),
-                        uid: uid,
+                        //uid: uid,
+                        uid: 1,
                         postUrl: photoURL,
                         nickname: displayName,
 
                     });
-                    alert("등록완료");
+                    alert("등록완료")
+                    window.location.hash = '#post'
                 } catch (error) {
                     alert(error);
                     console.log("error in addDoc:", error);

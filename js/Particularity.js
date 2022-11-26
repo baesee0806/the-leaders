@@ -19,19 +19,19 @@ export function urlClip() {
 
 // Top scroll button
 //버튼 가져오기
-window.onscroll = function () {
-  scrollFunction();
-};
+// window.onscroll = function () {
+//   scrollFunction();
+// };
 // 버튼 표시 조건 (40px 아래로 이동 시)
-export function scrollFunction() {
-  let mybutton = document.getElementById("top__scroll-Btn");
-  // console.log(window.scrollY);
-  if (window.scrollY > 40) {
-    mybutton.style.display = "block";
-  } else {
-    mybutton.style.display = "none";
-  }
-}
+// export function scrollFunction() {
+//   let mybutton = document.getElementById("top__scroll-Btn");
+//   // console.log(window.scrollY);
+//   if (window.scrollY > 40) {
+//     mybutton.style.display = "block";
+//   } else {
+//     mybutton.style.display = "none";
+//   }
+// }
 
 // 버튼 click 시 게시글의 Top으로 이동
 export function topFunction() {
