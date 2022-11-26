@@ -44,9 +44,8 @@ body {
   margin: 120px auto;
   padding: 50px;
   background-color: #fff;
-
-
 }
+
 
 /* 사이드 바 */
 
@@ -102,7 +101,7 @@ ul {
   font-size: 15px;
   font-weight: bold;
   text-align: center;
-  padding-left: px;
+  padding-left: 100px;
 }
 .post__side-bar-list li a span.txt {
   max-width: calc(100% - 20px);
@@ -143,10 +142,7 @@ ul {
   color: #c7c7c7;
   display: flex;
 }
-.foodContent__post-Url-clip {
-  max-width: 100px;
-  cursor: pointer;
-}
+
 .url-lmg {
   width: 17px;
   margin-left: 4px;
@@ -159,10 +155,14 @@ ul {
 }
 /* 게시글 내용란 */
 .foodContent__post-Content {
-  text-align: center;
+  display: flex;
+  justify-content: center;
   margin-top: 30px;
   margin-bottom: 50px;
   min-height: 300px;
+}
+.foodContent__post-Content #content-txt{
+  text-align: center;
 }
 
 /* 게시글 좋아요, 수정, 삭제 */

@@ -92,10 +92,10 @@ export const getPostContent = async () => {
     <!-- 게시글 내용 란 -->
     <section class="foodContent__post-Content">
       <div class="foodContent__contents">
-      <div id="contentImgUrl">
+      <div id="content-ImgUrl">
           <img style="background-image" src="${contentImgUrl}"/>
           </div>
-        <div style >
+        <div id="content-txt">
          ${content}
         </div>
       </div>
