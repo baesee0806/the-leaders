@@ -1,6 +1,7 @@
 /* header 영역 */
 .header {
-  background-color: #fff;
+  background-color: #94D493;
+  color: #fff;
   position: fixed;
   top: 0px;
   z-index: 10;
@@ -9,7 +10,18 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid #000;
+  /* border-bottom: 1px solid #000; */
+}
+
+@font-face {
+  font-family: 'UhBeeSe_hyun';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_five@.2.0/UhBeeSe_hyun.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.logo {
+  font-family: 'UhBeeSe_hyun';
 }
 
 /* 로그아웃시 보이는 헤더  */
@@ -35,12 +47,15 @@
   align-items: center;
 }
 
-.header__end--logout a,
-.header__end--logout label {
-  margin-left: 20px;
+.header__end--logout > a {
+  float: left;
+  margin-right: 20px;
+  height: 70px;
+  display: flex;
+  align-items: center;
 }
 
-.header__end--logout label {
+/* .header__end--logout label {
   cursor: pointer;
   width: 45px;
   height: 45px;
@@ -54,4 +69,21 @@
   width: 100%;
   height: 100%;
   border-radius: 50%;
+} */
+
+.header__Profile {
+  height: 70px;
+  display: flex;
+  align-items: center;
+}
+
+#headerProfileView {
+  width: 45px;
+  height: 45px;
+  border-radius: 50px;
+  object-fit: cover;
+  cursor: pointer;
+  border: 1px solid #B2B2B2;
+  box-sizing: border-box;
+  padding: 2px;
 }

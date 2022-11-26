@@ -39,12 +39,14 @@ strong {
      position: relative;
      width: 800px;
      height: 400px;
-     border: 1px solid #B2B2B2;
+     /* border: 1px solid #B2B2B2; */
      border-radius: 20px;
      margin-bottom: 100px;
      display: flex;
      justify-content: center;
-     align-items: center
+     align-items: center;
+     background-color: #fff;
+     filter: drop-shadow(6px 6px 6px #c3c3c3);
 }
 
 /* 프로필 이미지 부분 */
@@ -90,7 +92,7 @@ strong {
 .profile__upload-btn {
      height: 40px;
      width: 180px;
-     border: 1px solid #000;
+     border: transparent;
      border-radius: 20px;
      margin-top: 40px;
      display: flex;
@@ -99,7 +101,15 @@ strong {
      background-color: transparent;
      font-size: 17px;
      cursor: pointer;
+     background-color: #94D493;
+     color: #fff;
 }
+
+.profile__upload-btn:hover {
+     background-color: #87ed85;
+     /* opacity:0.7;  */
+     transition: 0.3s;
+ }
 
 .profile__upload-txt {
      text-align: center;
@@ -149,6 +159,7 @@ strong {
      border-radius: 5px;
      padding-left: 10px;
      border: 1px solid #dae1e6;
+     outline: none;
 }
 
 /* .profile__name-btn-box {
@@ -157,21 +168,28 @@ strong {
 
 .profile__name-btn {
      position: absolute;
-     bottom: 40px;
+     bottom: 24px;
      right: 0;
 
      height: 35px;
      width: 120px;
-     border: 1px solid #000;
+     border: transparent;
      border-radius: 20px;
      font-size: 14px;
-     background-color: transparent;
+     background-color: #94D493;
+     color: #fff;
 
      display: flex;
      justify-content: center;
      align-items: center;
      cursor: pointer;
 }
+
+.profile__name-btn:hover {
+     background-color: #87ed85;
+     /* opacity:0.7;  */
+     transition: 0.3s;
+ }
 
 .profile__mail-box {
      padding: 20px 0;
@@ -188,13 +206,3 @@ strong {
      padding: 10px 0 10px 2px;
 
 }
-
-
-/* 미디어쿼리 */
-@media (max-width: 768px) {
-
-
-
-}
-
-

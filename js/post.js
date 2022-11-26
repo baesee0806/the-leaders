@@ -7,7 +7,6 @@ import { dbService} from "./firebase.js";
 
 window.addEventListener("DOMContentLoaded", () => {
   const hash = window.location.hash;
-  console.log(hash)
   if (hash === "#post"){
     getPostContent();
   }
@@ -17,8 +16,10 @@ export const getPostContent = async () => {
   // let createdObjpost = []; //작성했던 게시글 이라는 배열을 생성
   const postContainer = document.getElementById("component__page");
   postContainer.innerHTML = "";
+ 
+  
+  const docRef = doc(dbService, "post", "pafw9YruqqrsbJDwhKvw");
 
-  const docRef = doc(dbService, "post", "ixJkFRtDprdjGutyw5Cn");
   const docSnap = await getDoc(docRef);
   docSnap.data();
   // console.log(docSnap.data());
@@ -33,7 +34,7 @@ export const getPostContent = async () => {
   const {
     title,
     category,
-    creatorNickname,
+    nickname,
     creatorProfileImg,
     date,
     postUrl,
@@ -67,7 +68,7 @@ export const getPostContent = async () => {
       </div>
       
 
-      <div class="foodContent__user-Name">${creatorNickname}</div>
+      <div class="foodContent__user-Name">${nickname}</div>
       <div class="foodContent__register-Date">작성일 : ${date}</div>
     </div>
     <!--현재 페이지 URL을 로드-->

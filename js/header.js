@@ -12,7 +12,7 @@ export const onToggle = () => {
 export const toLogout = () => {
   localStorage.clear();
   alert('logout 성공')
-  headerEndEl.style.display = 'inline'
+  headerEndEl.style.display = 'block'
   headerEndLogoutEl.style.display = 'none'
 }
 

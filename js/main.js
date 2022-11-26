@@ -1,11 +1,9 @@
 import { authService } from "./firebase.js";
 import { route , handleLocation } from "./router.js";
-// import { onToggle , toLogout , toWrite } from "./header.js";
+import { goToProfile } from "./header.js";
 import { uploading } from "./upload.js";
 import { handleAuth, socialLogin,logout  } from "./auth.js"
 import { changeProfileImage, changeProfileNickname, onFileChange, nicknameBtn } from "./profile.js";
-
-// import { authService } from "./firebase.js";
 import { urlClip, topFunction, scrollFunction  } from "./Particularity.js";
 import { getPostContent, delete_comment } from "./post.js";
 import { editing } from "./edit.js";
@@ -29,6 +27,9 @@ document.addEventListener("DOMContentLoaded",  () => {
         document.querySelector(".header__end--logout").style.display = 'inline'
         //alert("로그인 상태");
         // 이미지, 닉네임 변경 시 업데이트 해주는 역할
+        document.getElementById("headerProfileView").src =
+        user.auth.currentUser.photoURL || "/assets/blankProfile.webp";
+
         // document.getElementById("profileView").src =
         //   user.auth.currentUser.photoURL || "/assets/blankProfile.webp";
         // document.getElementById("profileNickname_val").textContent =
@@ -77,3 +78,5 @@ window.delete_comment = delete_comment;
 
 window.editing = editing;
 window.authService = authService;
+
+window.goToProfile = goToProfile;
