@@ -57,7 +57,7 @@ export const uploading = async (event) => {
                 const category = document.getElementById("category");
                 const title = document.getElementById("title");
                 const content = document.getElementById("content");
-                const score = document.getElementById("score");
+                // const score = document.getElementById("score");
                 const { uid, displayName } = authService.currentUser;
 
                 const today = new Date();
@@ -71,13 +71,12 @@ export const uploading = async (event) => {
                         category: category.value,
                         title: title.value,
                         content: content.value,
-                        score: parseInt(score.value),
+                        // score: parseInt(score.value),
                         date: parseInt(dateString),
                         //uid: uid,
                         uid: 1,
                         postUrl: photoURL,
                         nickname: displayName,
-
                     });
                     alert("등록완료")
                     window.location.hash = '#post'

@@ -25,7 +25,6 @@ const routes = {
 
 export const handleLocation = async () => {
   let path = window.location.hash.replace("#", ""); //#about -> about
-  console.log(path)
   // #post => post
   // "http://example.com/"가 아니라 도메인 뒤에 / 없이 "http://example.com" 으로 나오는 경우
   if (path.length === 0) {
@@ -62,8 +61,20 @@ export const handleLocation = async () => {
     document.getElementById("profileNickname_val").textContent =
       authService.currentUser.displayName ?? "닉네임 없음";
     document.getElementById("profileEmail").textContent =
-      authService.currentUser.email ?? "이메일 없음";
+      authService.currentUser.email ?? "이메일 없음";  
+      
+    changeHeaderProfile();
   };
+
+  if (path === "/") {
+    // 프로필 이미지 변경했을 때 헤더의 이미지도 변경해 주기
+    document.getElementById("headerProfileView").src =
+      authService.currentUser.photoURL ?? "/assets/blankProfile.webp";
+  };
+
+  
+
+  
 };
 
 // hash url 변경 시 처리

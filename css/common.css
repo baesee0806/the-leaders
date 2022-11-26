@@ -1,9 +1,11 @@
 /* 공통 선택자 */
+* {
+  font-family: 'Noto Sans KR', sans-serif;
+}
 
 html , body {
-  /* height: 100vh; */
-  font-family: 'Noto Sans KR', sans-serif;
-  color : #000
+  color : #000;
+  background-color: #F1F1F2;
 }
 
 a { 
@@ -11,7 +13,7 @@ a {
   text-decoration: none;
 }
 
-section {
+.main__wrap {
   margin-top: 70px;
 }
 

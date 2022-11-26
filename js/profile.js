@@ -11,7 +11,7 @@ import { v4 as uuidv4 } from "https://jspm.dev/uuid";
 export const changeProfileImage = async (event) => {
   event.preventDefault();
   // .disabled로 profileBtn 한 번만 클릭할 수 있도록 함 (한 번 클릭하면 비활성화됨)
-  // document.getElementById("profileImageBtn").disabled = true;
+  document.getElementById("profileImageBtn").disabled = true;
 
   const imgRef = ref(storageService, "profile_image/" + uuidv4())
 
@@ -31,7 +31,14 @@ export const changeProfileImage = async (event) => {
   })
     .then(() => {
       // alert("이미지 수정 완료");
-      Swal.fire('프로필 이미지 변경 완료')
+      Swal.fire({
+      text: "프로필 이미지 변경 완료",
+      confirmButtonColor: '#3085d6'})
+      
+      // 프로필 이미지 변경 시 헤더의 이미지도 바로 업데이트해줌
+      const newProfileImage = authService.currentUser.photoURL;
+        document.getElementById("headerProfileView").src  = newProfileImage;
+
       // Swal.fire({
       //   title: '프로필 이미지 변경 완료',
       //   showClass: {
@@ -65,7 +72,10 @@ export const changeProfileNickname = async (event) => {
     })
       .then(() => {
         // alert("닉네임 수정 완료");
-        Swal.fire('닉네임 수정 완료')
+        Swal.fire({
+          title: "닉네임 수정 완료",
+          confirmButtonColor: '#94D493'})
+          
         // 닉네임 수정 시 수정된 닉네임으로 새로고침 없이 자동 업데이트됨
         const updatedDisplayName = authService.currentUser.displayName;
           document.getElementById("profileNickname_val").textContent = updatedDisplayName;
