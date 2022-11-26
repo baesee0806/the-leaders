@@ -18,7 +18,7 @@ export const getPostContent = async () => {
   const postContainer = document.getElementById("component__page");
   postContainer.innerHTML = "";
 
-  const docRef = doc(dbService, "post", "ixJkFRtDprdjGutyw5Cn");
+  const docRef = doc(dbService, "post", "2DN8dm003RqugrU0eVhV");
   const docSnap = await getDoc(docRef);
   docSnap.data();
   // console.log(docSnap.data());
