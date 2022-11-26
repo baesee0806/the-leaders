@@ -13,9 +13,9 @@ a {
   text-decoration: none;
 }
 
-/* section {
+.main__wrap {
   margin-top: 70px;
-} */
+}
 
 img {
   display: block;
