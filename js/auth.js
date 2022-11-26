@@ -1,5 +1,4 @@
 import { emailRegex, pwRegex } from "./util.js";
-
 import { authService } from "./firebase.js";
 
 
@@ -9,7 +8,7 @@ import {
     signInWithPopup,
     GithubAuthProvider,
     signOut,
-  } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-auth.js";
+} from "https://www.gstatic.com/firebasejs/9.14.0/firebase-auth.js";
   
 
 export function handleAuth(event){

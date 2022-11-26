@@ -1,5 +1,5 @@
 /* header 영역 */
-.header {
+/* .header {
   background-color: #fff;
   position: fixed;
   top: 0px;
@@ -10,10 +10,10 @@
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid #000;
-}
+} */
 
 /* 로그아웃시 보이는 헤더  */
-.header .logo {
+/* .header .logo {
   margin-left: 50px;
   font-size: 25px;
   font-weight: 700;
@@ -28,7 +28,7 @@
 }
 
 /* 로그인시 보이는 헤더 */
-.header__end--logout {
+/* .header__end--logout {
   display: none;
   margin-right: 50px;
   justify-content: center;
@@ -54,7 +54,7 @@
   width: 100%;
   height: 100%;
   border-radius: 50%;
-}
+} */ 
 
 * {
   box-sizing: inherit;

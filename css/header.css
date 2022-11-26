@@ -6,7 +6,7 @@
   top: 0px;
   z-index: 10;
   width: 100%;
-  height: 90px;
+  height: 80px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -22,7 +22,6 @@
 
 .logo {
   font-family: 'UhBeeSe_hyun';
-  border-bottom: 1px solid #82D580;
 }
 
 /* 로그아웃시 보이는 헤더  */

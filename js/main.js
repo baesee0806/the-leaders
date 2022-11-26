@@ -4,8 +4,8 @@ import { goToProfile } from "./header.js";
 import { uploading } from "./upload.js";
 import { handleAuth, socialLogin, logout } from "./auth.js"
 import { changeProfileImage, changeProfileNickname, onFileChange, nicknameBtn } from "./profile.js";
-import { urlClip, topFunction, scrollFunction  } from "./Particularity.js";
-import { getPostContent, delete_comment } from "./post.js";
+import { urlClip, topFunction } from "./Particularity.js";
+import { getPostContent } from "./post.js";
 import { editing } from "./edit.js";
 import { getpagelist } from "./mainpage.js"
 
