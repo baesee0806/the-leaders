@@ -10,10 +10,10 @@
 
 .container{
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-around;
   flex-wrap: wrap;
   width: 100%;
-  margin: 0 195px 40px 195px;
+  /* margin: 0 195px 40px 195px; */
 }
 
 /* card하나의 크기 */
