@@ -27,6 +27,7 @@ export const handleLocation = async () => {
   // "http://example.com/"가 아니라 도메인 뒤에 / 없이 "http://example.com" 으로 나오는 경우
   if (path.length === 0) {
     path = "/";
+    
   }
 
   const route = routes[path] || routes[404];
@@ -35,7 +36,7 @@ export const handleLocation = async () => {
 
   // 현재 띄워진 화면에서만 DOM 조작 가능
   // 꼭 handleLocation 안에서 if문으로 path(어떤 화면인지)를 선택해야 함
-  if (path === "/") {
+  if (path === "/" ) {
     // 프로필 이미지 변경했을 때 헤더의 이미지도 변경해 주기
     // document.getElementById("headerProfileView").src =
     //   authService.currentUser.photoURL ?? "/assets/blankProfile.webp";
@@ -65,4 +66,4 @@ export const handleLocation = async () => {
 window.addEventListener("hashchange", handleLocation);
 window.route = route;
 // 첫 랜딩 또는 새로고침 시 처리
-document.addEventListener("DOMContentLoaded", handleLocation);
+// document.addEventListener("DOMContentLoaded", handleLocation);

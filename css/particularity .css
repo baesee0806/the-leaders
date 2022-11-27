@@ -108,9 +108,27 @@ body {
   width: 100%;
   display: flex;
   flex-direction: column;
-  margin: 95px auto;
+  margin: 15px auto 40px auto;
   padding: 50px;
   background-color: #fff;
+}
+
+.post__btn {
+  width: 1000px;
+  margin: 110px auto 0 auto;
+  display: flex;
+  justify-content: end;
+}
+
+.post__btns{
+  width: 105px;
+  height: 35px;
+  margin-right: 20px;
+  border-radius: 20px;
+  border: 1px solid #434242;
+  background-color: #434242;
+  color: #fff;
+  cursor: pointer;
 }
 
 
@@ -186,10 +204,6 @@ ul {
   border-bottom: 1px solid transparent;
 }
 
-.post__btn {
-  
-}
-
 
 /* 게시글 title */
 .foodContent__post-Header {
@@ -197,8 +211,14 @@ ul {
   /* 줄간격 */
   line-height: 120%;
 }
+.foodContent__get-title {
+  font-size: 29px;
+  font-weight: bold;
+}
+
 .foodContent__get-title span {
-  font-size: 20px;
+  font-size: 18px;
+  font-weight: 400;
 }
 .foodContent__user-Date {
   margin-top: 10px;

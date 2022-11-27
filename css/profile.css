@@ -197,6 +197,71 @@ strong {
 }
 
 /* 내가 작성한 글 */
-.mypost {
+/* .mypost {
      width: 1000px;
+} */
+
+
+/* 내가 작성한 글 */
+.mypost__wrap{
+     /* position: relative; */
+     width: 800px;
+     min-height: 300px;
+     /* border: 1px solid #B2B2B2; */
+     border-radius: 20px;
+     /* margin-bottom: 100px; */
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     background-color: #fff;
+     filter: drop-shadow(6px 6px 6px #c3c3c3);
 }
+
+ul {
+     list-style: none;
+     direction: none;
+   }
+   /* @media (max-width: 1300px) {
+     .post__side-bar {
+       display: none;
+     }
+   } */
+   .mypost_wrap{
+
+     max-height: 500px;
+     float: right;
+     top: 400px;
+     right: 50px;
+   }
+
+   .mypost ul.mypost__list {
+     margin-top: 20px;
+   }
+   
+   .mypost__list li a {
+     display: block;
+     font-size: 20px;
+     color: #000;
+     margin: 0 0 15px 0;
+   }
+   .pmypost__list  li a span {
+     /* float: left;
+     margin-left: 0; */
+   }
+   .mypost__list  li a span.num {
+     /* width: 20px;
+     color: red;
+     font-size: 15px;
+     font-weight: bold;
+     text-align: center; */
+
+   }
+   .mypost__list  li a span.txt {
+     /* max-width: calc(100% - 20px);
+     text-overflow: ellipsis;
+     white-space: nowrap;
+     word-wrap: normal;
+     width: inherit;
+     overflow: hidden;
+     border-bottom: 1px solid transparent; */
+   }

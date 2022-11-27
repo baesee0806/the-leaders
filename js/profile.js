@@ -128,17 +128,32 @@ export const nicknameBtn = () => {
 
 // 내가 쓴글 보여주는 함수
 export const getmypagelist = async () => {
- console.log("성공");
-
+  console.log("성공");
  
- const { uid, displayName, photoURL } = authService.currentUser;
- const q = query(collection(dbService, "post"), where(uid, "==", true));
-
- const querySnapshot = await getDocs(q);
- querySnapshot.forEach((doc) => {
-   // doc.data() is never undefined for query doc snapshots
-   console.log('성공');
- });
+  const profileid = authService.currentUser.uid
+ //  const { uid, displayName, photoURL } = authService.currentUser;
+  const q = query(collection(dbService, "post"), where("uid", "==", profileid));
+  const querySnapshot = await getDocs(q);
+  querySnapshot.forEach((doc) => {
+    console.log(doc.id, "->", doc.data());
+    let dates = doc.data().date.toString()
+    const 템플릿 = `
+ <a class="main__card" href="/post.html?id=${doc.id}"> 
+    <div class="product">
+        <div class="thumbnail" style="background-image: url('${doc.data().contentImgUrl}')">
+        </div>
+        <div class="description">
+            <h5 class="title">${doc.data().title}</h5>
+            <p class="nicknames"><span class="card__nickname">${doc.data().nickname}</span>님의 오늘의 먹을텐데</p>
+            <p class="date">${dates.slice(0,4)}-${dates.slice(4,6)}-${dates.slice(6)}</p>
+        </div>
+    </div>
+ </a>`
+    $('.mypost__wrap').append(템플릿)
+ 
+    
+  });
+ 
 
 
 

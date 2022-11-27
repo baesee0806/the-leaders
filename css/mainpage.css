@@ -1,6 +1,7 @@
 * {
   font-family: 'Noto Sans KR', sans-serif;
 }
+
 .main__wrapper {
   /* height: 3000px; */
   display: flex;
@@ -10,16 +11,22 @@
 
 .container{
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   flex-wrap: wrap;
   width: inherit;
-  margin: 100px 195px 40px 195px;
+  margin: 120px 13% 40px 13%;
+
+
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
 }
 
 /* card하나의 크기 */
 .product{
+  /* margin: 50px 0 20px 0; */
   box-sizing: border-box;
-  margin: 50px 35px 20px 35px;
+  margin: 30px 0;
   width: 300px;
   height: 350px;
   border-radius: 20px;
@@ -31,6 +38,11 @@
 .product:hover {
   /* margin-bottom: 40px; */
   transform: scale(1.02);
+}
+
+.main__card {
+  display: flex;
+  justify-content: center;
 }
 
 
