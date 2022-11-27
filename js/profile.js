@@ -11,7 +11,9 @@ import {
  getDocs,
  collection,
  setDoc,
- doc
+ doc,
+ query,
+ where
 } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js";
 
 
@@ -35,7 +37,8 @@ export const changeProfileImage = async (event) => {
     downloadUrl = await getDownloadURL(response.ref);
 
     await updateProfile(authService.currentUser, {
-      photoURL: downloadUrl ? downloadUrl : null,
+      photoURL: downloadUrl ? downloadUrl : "/assets/blankProfile.webp",
+      // photoURL: downloadUrl ? downloadUrl : null,
     })
       .then(() => {
         // alert("이미지 수정 완료");
@@ -126,7 +129,19 @@ export const nicknameBtn = () => {
 // 내가 쓴글 보여주는 함수
 export const getmypagelist = async () => {
  console.log("성공");
-//  const updatedDisplayName = authService.currentUser.uuidv4
+
+ 
+ const { uid, displayName, photoURL } = authService.currentUser;
+ const q = query(collection(dbService, "post"), where(uid, "==", true));
+
+ const querySnapshot = await getDocs(q);
+ querySnapshot.forEach((doc) => {
+   // doc.data() is never undefined for query doc snapshots
+   console.log('성공');
+ });
+
+
+
 //  const postRef = collection(dbService, 'post')
 //   await setDoc(doc(postRef, updatedDisplayName)).then((결과) => {
 //       결과.forEach((doc) => {

@@ -1,98 +1,197 @@
+* {
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+a { 
+  color: inherit;
+  text-decoration: none;
+}
+
+
+/* 헤더 */
+@font-face {
+  font-family: 'UhBeeSe_hyun';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_five@.2.0/UhBeeSe_hyun.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.logo {
+  font-family: 'UhBeeSe_hyun';
+}
+
+/* header 영역 */
+ .edit-header {
+  background-color: #94D493;
+  color: #fff;
+  position: fixed;
+  top: 0px;
+  z-index: 10;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+} 
+
+.edit-header .logo {
+  margin-left: 50px;
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.edit-header__end {
+  margin-right: 50px;
+}
+
+.edit-header__end a:first-child {
+  margin-right: 20px;
+}
+
+.edit-header__end--logout {
+  display: none;
+  margin-right: 50px;
+  justify-content: center;
+  align-items: center;
+}
+
+.edit-header__end--logout > a {
+  float: left;
+  margin-right: 20px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+}
+
+* {
+  box-sizing: inherit;
+}
+html {
+  scroll-behavior: smooth;
+}
+div article section {
+  display: block;
+}
+body {
+  margin: 0;
+  font-family: sans-serif;
+  box-sizing: border-box;
+  min-height: 100%;
+  background-color: #f1f1f2
+}
+
+
+
 .upload-main {
      width: 100%;
      height: 100%;
      display: flex;
      justify-content: center;
      align-items: center;
-   }
-   
-   .upload__input {
-     width: 1000px;
-     background-color: #fff;
-     margin: 50px 0;
-   
-     display: flex;
-     flex-direction: column;
-     justify-content: center;
-     align-items: center;
-   }
-   
-   .upload__cate-wrap {
-     margin: 40px 0 10px 5px;
-     width: 80%;
-   }
-   
-   .upload__category{
-     width: 390px;
-     border: 1px solid #B2B2B2;
-     border-radius: 5px;
-     padding: 8px 10px;
-   }
-   
-   .upload__title {
-     margin-bottom: 5px;
-     width: 80%;
-   }
-   
-   .upload__title > input {
-     width: 100%;
-     border: transparent;
-     padding: 12px 10px;
-     border-bottom: 1px solid #B2B2B2;
-     font-size: 1.1em;
-   }
-   
-   .upload__title > input:focus {
-     outline: none;
-   }
-   
-   .upload__content {
-     margin-bottom: 20px;
-     width: 80%;
-   }
-   
-   .upload__content > textarea {
-     width: 100%;
-     border: transparent;
-     padding: 12px 10px;
-     font-size: 1.1em;
-     outline: none;
-     resize: none;
-     /* border: 1px solid #B2B2B2; */
-   }
-   
-   .upload__content > textarea {
-     outline: none;
-   }
-   
-   .upload__img {
-     width: 80%;
-     height: 44px;
-     padding: 10px;
-     background-color: bisque;
-     margin-bottom: 30px;
-     border-radius: 6px;
-   }
-   
-   /* .upload__img > label {
-     border: 1px solid rgb(118, 118, 118);
-     padding: 2.5px 5px;
-     font-size: 0.82em;
-     border-radius: 2px;
-     background-color: #efefef;
-     justify-content: center;
-     align-items: center;
-   } */
-   
-   .upload__submit > input{
-     width: 130px;
-     height: 40px;
-     text-align: center;
-     border-radius: 6px;
-     margin-bottom: 40px;
-   
-     border: transparent;
-     background-color: #434242;
-     color: #fff;
-     cursor: pointer;
-   }
+  }
+  
+  .edit__input {
+    width: 1000px;
+    background-color: #fff;
+    margin: 120px 0 50px 0;
+  
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .upload__cate-wrap {
+    margin: 40px 0 10px 5px;
+    width: 80%;
+  }
+  
+  .upload__category{
+    width: 390px;
+    border: 1px solid #B2B2B2;
+    border-radius: 5px;
+    padding: 8px 10px;
+  }
+  
+  .upload__title {
+    margin-top: 30px;
+    margin-bottom: 5px;
+    width: 80%;
+  }
+  
+  .upload__title > input {
+    width: 100%;
+    border: transparent;
+    padding: 12px 10px;
+    border-bottom: 1px solid #B2B2B2;
+    font-size: 1.1em;
+  }
+  
+  .upload__title > input:focus {
+    outline: none;
+  }
+  
+  .upload__content {
+    margin-bottom: 20px;
+    width: 80%;
+  }
+  
+  .upload__content > textarea {
+    width: 100%;
+    border: transparent;
+    padding: 12px 10px;
+    font-size: 1.1em;
+    outline: none;
+    resize: none;
+    /* border: 1px solid #B2B2B2; */
+  }
+  
+  .upload__content > textarea {
+    outline: none;
+  }
+  
+  .edit__image-box {
+    width: 800px;
+    height: 290px;
+    padding: 20px;
+    background-color: bisque;
+    margin-bottom: 30px;
+    border-radius: 6px;
+  }
+
+  .profile__image {
+    margin-bottom: 15px;
+  }
+
+  #editView {
+    object-fit: cover;
+    height: 250px;
+  }
+  
+  /* .upload__img > label {
+    border: 1px solid rgb(118, 118, 118);
+    padding: 2.5px 5px;
+    font-size: 0.82em;
+    border-radius: 2px;
+    background-color: #efefef;
+    justify-content: center;
+    align-items: center;
+  } */
+  
+  .upload__submit > input{
+    width: 130px;
+    height: 40px;
+    text-align: center;
+    border-radius: 6px;
+    margin-bottom: 40px;
+  
+    border: transparent;
+    background-color: #434242;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  #image_container > img {
+    width: 200px;
+    height: 200px;
+  }

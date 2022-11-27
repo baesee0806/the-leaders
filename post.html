@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 
@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="/css/particularity .css">
+  <link rel="stylesheet" href="./css/particularity .css">
 </head>
 
 <body>
@@ -23,20 +23,15 @@
       <a href="#" onclick="route(event);logout();">로그아웃</a>
     </div>
    </header>
-
-<div class="container">
-    <button id="edit">수정</button>
-    <button id="delete">삭제</button>
-
-    <!-- <div class="detail-pic my-4" style="background-image: url('https://placeimg.com/640/380/tech');"></div> -->
-    <!-- <div>
-        <h5>올린사람 : 모름</h5>
-        <hr>
-        <h5 class="title">상품명</h5> 
-        <p class="date">올린날짜</p>
-        <p class="price">가격</p>
-    </div> -->
-</div>
+    
+    <div class="post__btn">
+      <button id="edit">수정</button>
+      <button id="delete">삭제</button>
+    </div>
+    
+    <div class="post__container">
+    </div>
+    
 
 <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
@@ -72,7 +67,7 @@
         console.log(result.data());
         let dates= result.data().date.toString();
         const detail = 
-        `
+        `    
   <article class="foodContent__wrap">
     <section class="foodContent__post-Header">
       <section class="foodContent__get-title">
@@ -110,7 +105,7 @@
     </section>
     <!-- 좋아요 게시글 수정,  삭제버튼-->
   </article>`
-        $('.container').append(detail)
+        $('.post__container').append(detail)
     })
     $('#edit').click(() => {
       window.location.href = '/edit.html?id=' + 쿼리스트링.get('id')

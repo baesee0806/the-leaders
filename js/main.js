@@ -29,6 +29,10 @@ document.addEventListener("DOMContentLoaded", () => {
       // 이미지, 닉네임 변경 시 업데이트 해주는 역할
         document.getElementById("headerProfileView").src =
         user.auth.currentUser.photoURL || "/assets/blankProfile.webp";
+      
+        // 프로필 이미지 변경했을 때 헤더의 이미지도 변경해 주기  
+      document.getElementById("headerProfileView").src =
+        authService.currentUser.photoURL ?? "/assets/blankProfile.webp";
 
       // document.getElementById("profileView").src =
       //   user.auth.currentUser.photoURL || "/assets/blankProfile.webp";

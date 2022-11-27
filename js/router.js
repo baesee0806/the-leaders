@@ -37,8 +37,9 @@ export const handleLocation = async () => {
   // 꼭 handleLocation 안에서 if문으로 path(어떤 화면인지)를 선택해야 함
   if (path === "/") {
     // 프로필 이미지 변경했을 때 헤더의 이미지도 변경해 주기
-    document.getElementById("headerProfileView").src =
-      authService.currentUser.photoURL ?? "/assets/blankProfile.webp";
+    // document.getElementById("headerProfileView").src =
+    //   authService.currentUser.photoURL ?? "/assets/blankProfile.webp";
+
 
     getpagelist()
   }

@@ -13,18 +13,24 @@
   justify-content: flex-start;
   flex-wrap: wrap;
   width: inherit;
-  margin: 0 195px 40px 195px;
+  margin: 100px 195px 40px 195px;
 }
 
 /* card하나의 크기 */
 .product{
   box-sizing: border-box;
-  margin: 80px 35px 20px 35px;
+  margin: 50px 35px 20px 35px;
   width: 300px;
   height: 350px;
   border-radius: 20px;
   overflow: hidden;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  /* transition: all 0.2s ease-in-out; */
+}
+
+.product:hover {
+  /* margin-bottom: 40px; */
+  transform: scale(1.02);
 }
 
 
@@ -34,7 +40,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center; */
-  background-color: red;
   background-repeat: no-repeat;
   background-size: cover;
   height: 70%;
@@ -53,13 +58,23 @@
 
 
 .title{
-  margin: 2px 0px 8px 0px;
+  margin: 3px 0px 8px 0px;
+  font-weight: bold;
+  font-size: 17px;
 }
+
 .nicknames{
   margin: 3px 0px 8px 0px;
 }
+
 .date{
   margin: 3px 0px 0px 0px;
+  color: gray;
+  font-size: 15px;
 }
 
+.card__nickname {
+  color: #66a965;
+  font-weight: bold;
+}
 
