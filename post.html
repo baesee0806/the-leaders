@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <!-- google font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/css/particularity .css">
+</head>
+
+<body>
+   
+   <header class="edit-header">
+    <a href="/" class="logo">먹을텐데</a>
+    <div class="edit-header__end--logout">
+      <a href="#upload" onclick="route(event)">글쓰기</a>
+      <a href="#" onclick="route(event);logout();">로그아웃</a>
+    </div>
+   </header>
+
+<div class="container">
+    <button id="edit">수정</button>
+    <button id="delete">삭제</button>
+
+    <!-- <div class="detail-pic my-4" style="background-image: url('https://placeimg.com/640/380/tech');"></div> -->
+    <!-- <div>
+        <h5>올린사람 : 모름</h5>
+        <hr>
+        <h5 class="title">상품명</h5> 
+        <p class="date">올린날짜</p>
+        <p class="price">가격</p>
+    </div> -->
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
+
+<script>
+    const firebaseConfig = {
+        apiKey: "AIzaSyB3MMTH8QP9Lkb0sV-LSdbxzhWvkEYtvJk",
+        authDomain: "the-leaders-65e8b.firebaseapp.com",
+        projectId: "the-leaders-65e8b",
+        storageBucket: "the-leaders-65e8b.appspot.com",
+        messagingSenderId: "64173971484",
+        appId: "1:64173971484:web:429786c568e80ed13b27d9"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+</script>
+
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"
+    integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+
+<script>
+    const db = firebase.firestore();
+    const storage = firebase.storage();
+
+    var 쿼리스트링 = new URLSearchParams(window.location.search)
+    console.log(쿼리스트링.get('id'))
+    
+    //url에 숨겨 놨던 id 찾아서 doc() 넣어야함 
+    db.collection('post').doc(쿼리스트링.get('id')).get().then((result) => {
+        console.log(result.data());
+        let dates= result.data().date.toString();
+        const detail = 
+        `
+  <article class="foodContent__wrap">
+    <section class="foodContent__post-Header">
+      <section class="foodContent__get-title">
+        ${result.data().title}
+        <span>( 카테고리 : ${result.data().category} )</span>
+      </section>
+    </section>
+    <!-- 프로필 이미지 닉네임 작성시간 -->
+    <div class="foodContent__user-Date">
+      <div>
+        <img
+          class="foodContent__user-img"
+          src="${result.data().profileImage}"
+          alt="userimg"
+        />
+      </div>
+      
+      <div class="foodContent__user-Name">${result.data().nickname}</div>
+      <div class="foodContent__register-Date">작성일: ${dates.slice(0,4)}-${dates.slice(4,6)}-${dates.slice(6)}</div>
+    </div>
+  
+    <!-- Top scroll button -->
+    <button onclick="topFunction()" id="top__scroll-Btn" title="Go to top">
+      Top
+    </button>
+    <!-- 게시글 내용 란 -->
+    <section class="foodContent__post-Content">
+      <div class="foodContent__contents">
+        <div id="contentImgUrl">
+            <img style="background-image" src="${result.data().contentImgUrl}"/>
+        <div class="contentText">
+          ${result.data().content}
+        </div>
+      </div>
+    </section>
+    <!-- 좋아요 게시글 수정,  삭제버튼-->
+  </article>`
+        $('.container').append(detail)
+    })
+    $('#edit').click(() => {
+      window.location.href = '/edit.html?id=' + 쿼리스트링.get('id')
+
+    })
+    $('#delete').click(() => {
+      if (window.confirm("삭제하시겠습니까?"))
+      {
+      db.collection("post").doc(쿼리스트링.get('id')).delete().then(() => {
+        console.log("Document successfully deleted!");
+        alert("삭제가 완료되었습니다.")
+        window.location.href ='/index.html'
+      
+      }).catch((error) => {
+        console.error("Error removing document: ", error);
+      });
+    }
+    })
+
+</script>
+</body>
+</html>
+
+<!--현재 페이지 URL을 로드-->
+<!-- <div class="foodContent__post-Url">
+  <div id="Content-Url">
+    ${result.data().contentImgUrl}</div>
+  <div
+    class="foodContent__post-Url-clip"
+    onclick="urlClip(); return false;"
+  >
+    <img
+      src="/img/file_copy_FILL0_wght400_GRAD0_opsz48.png"
+      class="url-lmg"
+      alt="copy"
+    />
+  </div>
+</div> -->
+
+
+  

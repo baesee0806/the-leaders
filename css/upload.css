@@ -85,14 +85,14 @@
 } */
 
 .upload__submit > input{
-  width: 100px;
+  width: 130px;
   height: 40px;
   text-align: center;
   border-radius: 6px;
   margin-bottom: 40px;
 
   border: transparent;
-  background-color: #222222;
+  background-color: #434242;
   color: #fff;
   cursor: pointer;
 }

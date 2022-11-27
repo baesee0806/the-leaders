@@ -31,7 +31,7 @@ strong {
 
 .profile-section > h1 {
      width: 800px;
-     margin: 40px 0 15px 20px;
+     margin: 50px 0 15px 20px;
      float: left;
 }
 
@@ -86,7 +86,6 @@ strong {
      height: 200px;
      padding: 0;
      border-radius: 140px;
-     border: 1px solid #dae1e6;
 }
 
 .profile__upload-btn {
@@ -204,5 +203,9 @@ strong {
 
 .profile__mail-val {
      padding: 10px 0 10px 2px;
+}
 
+/* 내가 작성한 글 */
+.mypost {
+     width: 1000px;
 }

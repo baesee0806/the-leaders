@@ -3,10 +3,8 @@ import { route , handleLocation } from "./router.js";
 import { goToProfile } from "./header.js";
 import { uploading } from "./upload.js";
 import { handleAuth, socialLogin, logout } from "./auth.js"
-import { changeProfileImage, changeProfileNickname, onFileChange, nicknameBtn } from "./profile.js";
+import { changeProfileImage, changeProfileNickname, onFileChange, nicknameBtn, getmypagelist } from "./profile.js";
 import { urlClip, topFunction } from "./Particularity.js";
-import { getPostContent } from "./post.js";
-import { editing } from "./edit.js";
 import { getpagelist } from "./mainpage.js"
 
 
@@ -54,9 +52,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // 전역함수 리스트 
 window.route = route;
-// window.onToggle = onToggle;
-// window.toLogout = toLogout;
-// window.toWrite = toWrite;
 window.handleAuth = handleAuth;
 window.socialLogin = socialLogin;
 window.logout = logout;
@@ -67,20 +62,15 @@ window.changeProfileNickname = changeProfileNickname;
 window.nicknameBtn = nicknameBtn;
 window.handleLocation = handleLocation;
 
-// window.goToProfile = goToProfile;
+
 window.uploading = uploading;
-// 전역함수 리스트
 window.route = route;
 window.urlClip = urlClip;
 window.topFunction = topFunction;
 // window.scrollFunction = scrollFunction;
-window.getPostContent = getPostContent;
 // window.delete_comment = delete_comment;
 
-window.editing = editing;
 window.authService = authService;
 window.getpagelist= getpagelist;
-
 window.goToProfile = goToProfile;
-
-window.goToProfile = goToProfile;
+window.getmypagelist = getmypagelist

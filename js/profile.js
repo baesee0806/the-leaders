@@ -1,11 +1,19 @@
-import { authService, storageService } from "./firebase.js";
+import { authService, storageService, dbService } from "./firebase.js";
 import {
+  
   ref,
   uploadString,
   getDownloadURL,
 } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-storage.js";
 import { updateProfile } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-auth.js";
 import { v4 as uuidv4 } from "https://jspm.dev/uuid";
+import {
+ getDocs,
+ collection,
+ setDoc,
+ doc
+} from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js";
+
 
 // 프로필 이미지 변경 함수
 export const changeProfileImage = async (event) => {
@@ -13,7 +21,7 @@ export const changeProfileImage = async (event) => {
   // .disabled로 profileBtn 한 번만 클릭할 수 있도록 함 (한 번 클릭하면 비활성화됨)
   document.getElementById("profileImageBtn").disabled = true;
 
-  const imgRef = ref(storageService, "profile_image/" + uuidv4())
+  const imgRef = ref(storageService, "profile_image/" + uuidv4());
 
   const imgDataUrl = localStorage.getItem("imgDataUrl");
   let downloadUrl; //새로운 프로필 이미지 url
@@ -26,35 +34,27 @@ export const changeProfileImage = async (event) => {
     // 앞으로 화면에 프로필 이미지를 출력할 때 downloadUrl을 이용 할 것임
     downloadUrl = await getDownloadURL(response.ref);
 
-  await updateProfile(authService.currentUser, {
-    photoURL: downloadUrl ? downloadUrl : null
-  })
-    .then(() => {
-      // alert("이미지 수정 완료");
-      Swal.fire({
-      text: "프로필 이미지 변경 완료",
-      confirmButtonColor: '#3085d6'})
-      
-      // 프로필 이미지 변경 시 헤더의 이미지도 바로 업데이트해줌
-      const newProfileImage = authService.currentUser.photoURL;
-        document.getElementById("headerProfileView").src  = newProfileImage;
-
-      // Swal.fire({
-      //   title: '프로필 이미지 변경 완료',
-      //   showClass: {
-      //     backdrop: 'animate__animated animate__fadeIn'
-      //   },
-      //   hideClass: {
-      //     popup: 'animate__animated animate__fadeOut'
-      //   }
-      // })
+    await updateProfile(authService.currentUser, {
+      photoURL: downloadUrl ? downloadUrl : null,
     })
-    .catch((error) => {
-      // alert("프로필 수정 실패");
-      Swal.fire('프로필 이미지 변경 실패')
-      console.log("error:", error);
-    });
-  };
+      .then(() => {
+        // alert("이미지 수정 완료");
+        Swal.fire({
+          text: "프로필 이미지 변경 완료",
+          confirmButtonColor: "#3085d6",
+        });
+
+        // 프로필 이미지 변경 시 헤더의 이미지도 바로 업데이트해줌
+        const newProfileImage = authService.currentUser.photoURL;
+        document.getElementById("headerProfileView").src = newProfileImage;
+      })
+
+      .catch((error) => {
+        // alert("프로필 수정 실패");
+        Swal.fire("프로필 이미지 변경 실패");
+        console.log("error:", error);
+      });
+  }
 };
 
 // 닉네임 변경 함수
@@ -66,7 +66,6 @@ export const changeProfileNickname = async (event) => {
 
   // input 창에 입력값이 있을 때만 닉네임 변경 기능이 작동함
   if (document.getElementById("profileNickname").value !== "") {
-
     await updateProfile(authService.currentUser, {
       displayName: newNickname ? newNickname : null,
     })
@@ -74,28 +73,27 @@ export const changeProfileNickname = async (event) => {
         // alert("닉네임 수정 완료");
         Swal.fire({
           title: "닉네임 수정 완료",
-          confirmButtonColor: '#94D493'})
-          
+          confirmButtonColor: "#94D493",
+        });
+
         // 닉네임 수정 시 수정된 닉네임으로 새로고침 없이 자동 업데이트됨
         const updatedDisplayName = authService.currentUser.displayName;
-          document.getElementById("profileNickname_val").textContent = updatedDisplayName;
+        document.getElementById("profileNickname_val").textContent =
+          updatedDisplayName;
         // input창 입력값 리셋하기
         document.getElementById("profileNickname").value = null;
       })
       .catch((error) => {
-        Swal.fire('닉네임 수정 실패')
+        Swal.fire("닉네임 수정 실패");
         // alert("프로필 수정 실패");
         console.log("error:", error);
       });
-       
-  };    
+  }
 };
 
-
-// 마이페이지의 프로필 이미지를 클릭해서 업로드할 이미지 파일을 선택하고 
+// 마이페이지의 프로필 이미지를 클릭해서 업로드할 이미지 파일을 선택하고
 // '열기'를 눌렀을 때 onFileChange 함수가 실행됨
 export const onFileChange = (event) => {
-
   const theFile = event.target.files[0]; // file 객체를 theFile라는 변수에 담았음
   // FileReader는 JS가 자체적으로 제공하는 API
   const reader = new FileReader();
@@ -111,19 +109,39 @@ export const onFileChange = (event) => {
   };
 };
 
-
 // 닉네임 버튼 클릭했을 때 input 창 띄우기 토글
 export const nicknameBtn = () => {
+  const nameVal = document.getElementById("profileNickname_val");
+  const nameInput = document.getElementById("profileNickname");
 
-  const nameVal = document.getElementById('profileNickname_val');
-  const nameInput = document.getElementById('profileNickname');
-  
-  if(nameVal.style.display !== 'block') {
-    nameVal.style.display = 'block';
-    nameInput.style.display = 'none';
+  if (nameVal.style.display !== "block") {
+    nameVal.style.display = "block";
+    nameInput.style.display = "none";
   } else {
-    nameVal.style.display = 'none';
-    nameInput.style.display = 'block';
-  };
-  
+    nameVal.style.display = "none";
+    nameInput.style.display = "block";
+  }
 };
+
+// 내가 쓴글 보여주는 함수
+export const getmypagelist = async () => {
+ console.log("성공");
+//  const updatedDisplayName = authService.currentUser.uuidv4
+//  const postRef = collection(dbService, 'post')
+//   await setDoc(doc(postRef, updatedDisplayName)).then((결과) => {
+//       결과.forEach((doc) => {
+//           let dates = doc.data().date.toString()
+//           const 템플릿 = `
+//       <a href="/post.html?id=${doc.id}"> 
+//           <div class="product">
+//           <div class="thumbnail" style="background-image: url('${doc.data().contentImgUrl}')"></div>
+//               <div class="description">
+//                   <h5 class="title">${doc.data().title}</h5>
+//                   <p class="nicknames">${doc.data().nickname}님의 오늘의 먹을텐데</p>
+//                   <p class="date">${dates.slice(0,4)}-${dates.slice(4,6)}-${dates.slice(6)}</p>
+//               </div>
+//           </div></a>`
+//           $('.mypost__container').append(템플릿)
+//       })
+//   })
+}

@@ -1,28 +1,65 @@
+* {
+  font-family: 'Noto Sans KR', sans-serif;
+}
 .main__wrapper {
   /* height: 3000px; */
   display: flex;
   flex-wrap: wrap;
+  width: 100%;
 }
 
+.container{
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  width: inherit;
+  margin: 0 195px 40px 195px;
+}
+
+/* card하나의 크기 */
+.product{
+  box-sizing: border-box;
+  margin: 80px 35px 20px 35px;
+  width: 300px;
+  height: 350px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+
+/* background-img */
 .thumbnail {
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; */
+  background-color: red;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 70%;
+  width: 100%;
+}
+/* 내용  */
+.description{
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  background-color: red;
-  height: 300px;
-  width: 25%;
-  /* margin: 0 0 15px 0;
-  padding: 0 10px; */
+  align-items:center;
+  height: 30%;
+  background-color: ghostwhite;
+
 }
 
-.image__wrap {
-  background-color: aliceblue;
-  width: 150px;
-  height: 150px;
+
+.title{
+  margin: 2px 0px 8px 0px;
+}
+.nicknames{
+  margin: 3px 0px 8px 0px;
+}
+.date{
+  margin: 3px 0px 0px 0px;
 }
 
-img {
-  width: inherit;
-  height: inherit;
-}
+

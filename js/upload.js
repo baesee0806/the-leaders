@@ -1,7 +1,5 @@
 import { authService, dbService, storageService } from "./firebase.js";
 import { v4 as uuidv4 } from "https://jspm.dev/uuid";
-
-
 import {
     ref,
     uploadString,
@@ -10,7 +8,6 @@ import {
     uploadBytes,
     uploadBytesResumable
 } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-storage.js";
-
 import {
     doc,
     addDoc,
@@ -23,12 +20,11 @@ import {
 } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js";
 
 
-
 export const uploading = async (event) => {
 
     const imgFile = document.querySelector('#image').files[0]
     const storageRef = ref(storageService, 'post_image/' + uuidv4())
-    const uploadfile = uploadBytes(storageRef, imgFile)
+    // const uploadfile = uploadBytes(storageRef, imgFile)
     const uploadTask = uploadBytesResumable(storageRef, imgFile)
 
     uploadTask.on('state_change',
@@ -52,13 +48,13 @@ export const uploading = async (event) => {
         },
         //성공시 동작하는 함수 
         () => {
-            getDownloadURL(uploadTask.snapshot.ref).then((photoURL) => {
-                console.log('업로드된 경로는:', photoURL);
+            getDownloadURL(uploadTask.snapshot.ref).then((contentImgUrl) => {
+                console.log('업로드된 경로는:', contentImgUrl);
                 const category = document.getElementById("category");
                 const title = document.getElementById("title");
                 const content = document.getElementById("content");
-                // const score = document.getElementById("score");
-                const { uid, displayName } = authService.currentUser;
+                const { uid, displayName, photoURL } = authService.currentUser;
+                console.log(authService.currentUser)
 
                 const today = new Date();
                 const year = today.getFullYear();
@@ -71,15 +67,15 @@ export const uploading = async (event) => {
                         category: category.value,
                         title: title.value,
                         content: content.value,
-                        // score: parseInt(score.value),
                         date: parseInt(dateString),
-                        //uid: uid,
-                        uid: 1,
-                        postUrl: photoURL,
+                        uid: uid,
+                        contentImgUrl: contentImgUrl,
                         nickname: displayName,
+                        profileImage: photoURL,
                     });
                     alert("등록완료")
-                    window.location.hash = '#post'
+                    window.location.hash = '#'
+                    
                 } catch (error) {
                     alert(error);
                     console.log("error in addDoc:", error);

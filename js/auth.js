@@ -1,8 +1,6 @@
 import { emailRegex, pwRegex } from "./util.js";
 import { authService } from "./firebase.js";
-
-
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.9.0/firebase-auth.js";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "https://www.gstatic.com/firebasejs/9.9.0/firebase-auth.js";
 import {
     GoogleAuthProvider,
     signInWithPopup,
@@ -21,16 +19,19 @@ export function handleAuth(event){
 
     createUserWithEmailAndPassword(authService, signUpEmail, signUpPassword)
         .then((userCredential) => {
+          
+          // 회원가입 시 닉네임 저장하기
+          const signUpNickname = document.getElementById('signup__nick').value;
+          updateProfile(authService.currentUser, {
+            displayName: signUpNickname ? signUpNickname : null,
+            photoURL: "/assets/blankProfile.webp" ? "/assets/blankProfile.webp" : null
+          })
+           
 
           // 회원가입 시 입력한 닉네임 DB에 저장하기
-          const signUpNickname = document.getElementById('signup__nick').value
-          authService.currentUser.displayName = signUpNickname;
-          
-          // 이건 실패
-          // const signUpNickname = authService.currentUser.displayName;
-          // document.getElementById("signup__nick").value = signUpNickname;
-
-
+          // const signUpNickname = document.getElementById('signup__nick').value
+          // authService.currentUser.displayName = signUpNickname;
+        
 
           console.log(userCredential)
           const user = userCredential.user;

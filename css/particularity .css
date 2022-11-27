@@ -1,61 +1,70 @@
+* {
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+a { 
+  color: inherit;
+  text-decoration: none;
+}
+
+
+/* 헤더 */
+@font-face {
+  font-family: 'UhBeeSe_hyun';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_five@.2.0/UhBeeSe_hyun.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.logo {
+  font-family: 'UhBeeSe_hyun';
+}
+
 /* header 영역 */
-/* .header {
-  background-color: #fff;
+ .edit-header {
+  background-color: #94D493;
+  color: #fff;
   position: fixed;
   top: 0px;
   z-index: 10;
   width: 100%;
-  height: 70px;
+  height: 80px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid #000;
-} */
+} 
 
-/* 로그아웃시 보이는 헤더  */
-/* .header .logo {
+.edit-header .logo {
   margin-left: 50px;
   font-size: 25px;
   font-weight: 700;
 }
 
-.header .header__end {
+.edit-header__end {
   margin-right: 50px;
 }
 
-.header .header__end a:first-child {
+.edit-header__end a:first-child {
   margin-right: 20px;
 }
 
-/* 로그인시 보이는 헤더 */
-/* .header__end--logout {
+.edit-header__end--logout {
   display: none;
   margin-right: 50px;
   justify-content: center;
   align-items: center;
 }
 
-.header__end--logout a,
-.header__end--logout label {
-  margin-left: 20px;
+.edit-header__end--logout > a {
+  float: left;
+  margin-right: 20px;
+  height: 70px;
+  display: flex;
+  align-items: center;
 }
 
-.header__end--logout label {
-  cursor: pointer;
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  border: 1px solid #000;
-  box-sizing: border-box;
-  padding: 2px;
-}
 
-.header__end--logout label img {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-} */ 
-
+/* 글 상세 페이지 */
 * {
   box-sizing: inherit;
 }
@@ -124,10 +133,16 @@ ul {
   top: 400px;
   right: 50px;
 }
+
+.foodContent__post-Header {
+  padding-left: 10px;
+}
+
 .post__side-bar-title {
   text-align: center;
   display: block;
 }
+
 .post__side-bar-title::after {
   content: "";
   display: block;
@@ -173,8 +188,7 @@ ul {
 
 /* 게시글 title */
 .foodContent__post-Header {
-
-  font-size: 3rem;
+  font-size: 2.2rem;
   /* 줄간격 */
   line-height: 120%;
 }
@@ -182,14 +196,24 @@ ul {
   font-size: 20px;
 }
 .foodContent__user-Date {
-  margin-top: 30px;
+  margin-top: 10px;
   display: flex;
   gap: 15px;
   align-items: center;
+
+  padding-bottom: 20px;
+  padding-left: 10px;
+  border-bottom: 2px solid #f2f2f2;
 }
 
 .foodContent__user-Name {
-  font-size: 20px;
+  font-size: 1.2rem;
+}
+
+.foodContent__user-img{
+  height: 40px;
+  width: 40px;
+  border-radius: 140px;
 }
 
 .foodContent__post-Url {
@@ -211,6 +235,7 @@ ul {
   border-left: 2px solid #f2f2f2;
   padding-left: 10px;
 }
+
 /* 게시글 내용란 */
 .foodContent__post-Content {
   display: flex;
@@ -218,9 +243,27 @@ ul {
   margin-top: 30px;
   margin-bottom: 50px;
   min-height: 300px;
+  width: 900px;
 }
+
+#contentImgUrl {
+  width: 900px;
+}
+
+#contentImgUrl > img {
+  width: 80%;
+  object-fit: cover;
+  margin-bottom: 20px;
+  padding: 0 10px;
+}
+
+.contentText {
+  padding: 0 10px;
+}
+
 .foodContent__post-Content #content-txt{
   text-align: center;
+  padding: 0 10px;
 }
 
 /* 게시글 좋아요, 수정, 삭제 */
@@ -268,4 +311,8 @@ ul {
 .comment__btn-wrap button:hover {
   color: white;
   background-color: #000;
+}
+
+.container > button {
+  margin-top: 200px;
 }

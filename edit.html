@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>edit</title>
+    <!-- CSS only -->
+    <link rel="stylesheet" href="/css/edit.css">
+</head>
+
+<body>
+    <!-- As a link -->
+    <nav class="navbar bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/index.html">먹을탠데~</a>
+            <nav class="nav">
+                <a class="nav-link active" aria-current="page" href="/upload.html">새글 등록</a>
+                <a class="nav-link" href="/login.html">로그인</a>
+            </nav>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>수정하기</h1><br>
+        <section class="post-main">
+            <div class="post-img">
+            </div>
+            <form id="profileForm" class="profile__image-box" onsubmit="changeProfileImage(event)">
+                <div class="profile__image">
+                    <div id="testimg"></div>
+                     <!-- label의 for="" = input의 id 값 -->
+                     <label id="imgLabel" for="imgInput">
+                          <img id="imgView" src="/assets/transparentProfile.png"/>
+                          <!-- <input onchange="onFileChange(event)" id="imgInput" type="file" accept="images/*" /> -->
+                     </label>
+                </div>
+                <!-- <input id="profileImageBtn" class="profile__upload-btn"  value="이미지 변경" /> -->
+           </form>
+
+            <!-- <input id="image" type="file"> -->
+    </div>
+    <div class="upload-input">
+        <!-- <div class="upload-category">
+            <div>
+                <input name="upload-style" id="category" type="radio" value="korean">한식</option>
+                <input name="upload-style" id="category" type="radio" value="chinese">중식</option>
+                <input name="upload-style" id="category" type="radio" value="western">양식</option>
+                <input name="upload-style" id="category" type="radio" value="japanese">일식</option>
+                <input name="upload-style" id="category" type="radio" value="etc">기타</option>
+            </div> -->
+    </div>
+    <div class="upload-title">
+        <input id="title" type="text" placeholder="제목을 입력해 주세요">
+    </div>
+    <div class="upload-content">
+        <textarea name="" id="content" cols="80" rows="10" placeholder="내용을 입력해 주세요"></textarea>
+    </div>
+
+    <div class="upload-submit">
+        <input id="send" type="button" value="수정">
+    </div>
+    </div>
+    </section>
+    </div>
+
+
+
+
+
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyB3MMTH8QP9Lkb0sV-LSdbxzhWvkEYtvJk",
+            authDomain: "the-leaders-65e8b.firebaseapp.com",
+            projectId: "the-leaders-65e8b",
+            storageBucket: "the-leaders-65e8b.appspot.com",
+            messagingSenderId: "64173971484",
+            appId: "1:64173971484:web:429786c568e80ed13b27d9"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+
+    <script>
+        const db = firebase.firestore();
+        const storage = firebase.storage();
+        const storageRef = firebase.storage().ref();
+        const auth = firebase.auth();
+
+        var 쿼리스트링 = new URLSearchParams(window.location.search)
+        console.log(쿼리스트링.get('id'))
+        db.collection('post').doc(쿼리스트링.get('id')).get().then((result) => {
+            console.log(result.data());
+            const imgtest = `
+            <img id="imgView" src="${(result.data().contentImgUrl)}" />`
+
+            $('#title').val(result.data().title)
+            $('#content').val(result.data().content)
+            $('#testimg').val(result.data().contentImgUrl)
+            $('.container').append(imgtest)
+                
+            // $('#category').get(result.data().category)
+            // $('#image').val(result.data().contentImgUrl)
+        })
+        $('#send').click(() => {
+            // var file = document.querySelector('#image').files[0];
+            // var 저장할경로 = storageRef.child('image/' + file.name);
+            // var 업로드작업 = 저장할경로.put(file)
+            // const { uid, displayName } = auth.currentUser;
+            // 업로드작업.on('state_changed',
+            //     // 변화시 동작하는 함수 
+            //     null,
+            //     //에러시 동작하는 함수
+            //     (error) => {
+            //         console.error('실패사유는', error);
+            //     },
+            //     // 성공시 동작하는 함수
+            //     () => {
+                    // 업로드작업.snapshot.ref.getDownloadURL().then((contentImgUrl) => {
+                        // console.log('업로드된 경로는', contentImgUrl);
+                        var 바꿀꺼 = {
+                            title: $('#title').val(),
+                            content: $('#content').val(),
+                            // category: $('#category').val(),
+                            // contentImgUrl: contentImgUrl,
+                        }
+
+                        db.collection('post').doc(쿼리스트링.get('id')).update(바꿀꺼).then(() => {
+                            alert('수정완료')
+                            window.location.href = '/post.html?id=' + 쿼리스트링.get('id')
+                        })
+                    });
+            //     }
+            // );
+
+        // })
+
+    </script>
+</body>
+
+</html>
+
+
+
