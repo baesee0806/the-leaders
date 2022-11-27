@@ -1,85 +1,85 @@
 a {
      text-decoration: none;
-     color: inherit
-}
-
-h1 {
+     color: inherit;
+   }
+   
+   h1 {
      font-size: 1.5em;
      font-weight: bold;
-}
-
-strong {
+   }
+   
+   strong {
      font-weight: bold;
-}
-
-.wrap {
+   }
+   
+   .wrap {
      display: block;
      justify-content: center;
      align-items: center;
      width: 100%;
      height: 100%;
-}
-
-/* 헤더 하단 컨텐츠 */
-.profile-section {
+   }
+   
+   /* 헤더 하단 컨텐츠 */
+   .profile-section {
      position: relative;
      display: flex;
      flex-direction: column;
      justify-content: center;
      align-items: center;
-}
-
-.profile-section > h1 {
+   }
+   
+   .profile-section > h1 {
      width: 800px;
      margin: 50px 0 15px 20px;
      float: left;
-}
-
-.profile{
+   }
+   
+   .profile {
      position: relative;
      width: 800px;
      height: 400px;
      /* border: 1px solid #B2B2B2; */
      border-radius: 20px;
-     margin-bottom: 100px;
+     margin-bottom: 30px;
      display: flex;
      justify-content: center;
      align-items: center;
      background-color: #fff;
      filter: drop-shadow(6px 6px 6px #c3c3c3);
-}
-
-/* 프로필 이미지 부분 */
-.profile__image-box {
+   }
+   
+   /* 프로필 이미지 부분 */
+   .profile__image-box {
      box-sizing: border-box;
      display: flex;
      flex-direction: column;
      justify-content: center;
      align-items: center;
-     border-right: 1px solid #B2B2B2;
+     border-right: 1px solid #b2b2b2;
      width: 300px;
      height: 400px;
      padding: 30px;
-}
-
-#imgLabel {
+   }
+   
+   #imgLabel {
      cursor: pointer;
-}
-
-#imgInput {
+   }
+   
+   #imgInput {
      display: none;
-}
-
-/* 프로필 이미지 */
-#profileView {
+   }
+   
+   /* 프로필 이미지 */
+   #profileView {
      object-fit: cover;
      width: 200px;
      height: 200px;
      padding: 0;
      border-radius: 140px;
-}
-
-.profile__upload-btn {
+   }
+   
+   .profile__upload-btn {
      height: 40px;
      width: 180px;
      border: transparent;
@@ -91,22 +91,22 @@ strong {
      background-color: transparent;
      font-size: 17px;
      cursor: pointer;
-     background-color: #94D493;
+     background-color: #94d493;
      color: #fff;
-}
-
-.profile__upload-btn:hover {
+   }
+   
+   .profile__upload-btn:hover {
      background-color: #87ed85;
      /* opacity:0.7;  */
      transition: 0.3s;
- }
-
-.profile__upload-txt {
+   }
+   
+   .profile__upload-txt {
      text-align: center;
-}
-
-/* 닉네임, 이메일 부분 */
-.profile__text-box {
+   }
+   
+   /* 닉네임, 이메일 부분 */
+   .profile__text-box {
      box-sizing: border-box;
      display: flex;
      flex-direction: column;
@@ -115,153 +115,113 @@ strong {
      width: 500px;
      height: 400px;
      padding: 70px 50px;
-}
-
-.profile__name, .profile__name-val, .profile__mail, .profile__mail-val {
+   }
+   
+   .profile__name,
+   .profile__name-val,
+   .profile__mail,
+   .profile__mail-val {
      font-size: 20px;
-}
-
-.profile__name-box {
+   }
+   
+   .profile__name-box {
      display: flex;
      flex-direction: column;
      position: relative;
      padding-bottom: 20px;
      width: 400px;
      height: 100px;
-}
-
-.profile__name {
+   }
+   
+   .profile__name {
      /* width: 130px;
-     height: 44px;
-     float: left;
-     display: flex;
-     align-items: center; */
+        height: 44px;
+        float: left;
+        display: flex;
+        align-items: center; */
      padding: 10px 0;
-}
-
-.profile__name-val {
+   }
+   
+   .profile__name-val {
      padding: 10px 0 10px 2px;
-}
-
-.profile__name-input {
+   }
+   
+   .profile__name-input {
      height: 40px;
      width: 250px;
      border-radius: 5px;
      padding-left: 10px;
      border: 1px solid #dae1e6;
      outline: none;
-}
-
-/* .profile__name-btn-box {
-     width: 400px;
-} */
-
-.profile__name-btn {
+   }
+   
+   /* .profile__name-btn-box {
+        width: 400px;
+   } */
+   
+   .profile__name-btn {
      position: absolute;
      bottom: 24px;
      right: 0;
-
+   
      height: 35px;
      width: 120px;
      border: transparent;
      border-radius: 20px;
      font-size: 14px;
-     background-color: #94D493;
+     background-color: #94d493;
      color: #fff;
-
+   
      display: flex;
      justify-content: center;
      align-items: center;
      cursor: pointer;
-}
-
-.profile__name-btn:hover {
+   }
+   
+   .profile__name-btn:hover {
      background-color: #87ed85;
      /* opacity:0.7;  */
      transition: 0.3s;
- }
-
-.profile__mail-box {
+   }
+   
+   .profile__mail-box {
      padding: 20px 0;
      width: 400px;
      display: flex;
      flex-direction: column;
-}
-
-.profile__mail {
-     padding: 10px 0;
-}
-
-.profile__mail-val {
-     padding: 10px 0 10px 2px;
-}
-
-/* 내가 작성한 글 */
-/* .mypost {
-     width: 1000px;
-} */
-
-
-/* 내가 작성한 글 */
-.mypost__wrap{
-     /* position: relative; */
-     width: 800px;
-     min-height: 300px;
-     /* border: 1px solid #B2B2B2; */
-     border-radius: 20px;
-     /* margin-bottom: 100px; */
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     background-color: #fff;
-     filter: drop-shadow(6px 6px 6px #c3c3c3);
-}
-
-ul {
-     list-style: none;
-     direction: none;
-   }
-   /* @media (max-width: 1300px) {
-     .post__side-bar {
-       display: none;
-     }
-   } */
-   .mypost_wrap{
-
-     max-height: 500px;
-     float: right;
-     top: 400px;
-     right: 50px;
-   }
-
-   .mypost ul.mypost__list {
-     margin-top: 20px;
    }
    
-   .mypost__list li a {
-     display: block;
-     font-size: 20px;
-     color: #000;
-     margin: 0 0 15px 0;
+   .profile__mail {
+     padding: 10px 0;
    }
-   .pmypost__list  li a span {
-     /* float: left;
-     margin-left: 0; */
+   
+   .profile__mail-val {
+     padding: 10px 0 10px 2px;
    }
-   .mypost__list  li a span.num {
-     /* width: 20px;
-     color: red;
-     font-size: 15px;
-     font-weight: bold;
-     text-align: center; */
-
+   
+   /* 나의 게시물 */
+   .mypost-section h1 {
+     width: 800px;
+     margin: 0 0 15px 20px;
    }
-   .mypost__list  li a span.txt {
-     /* max-width: calc(100% - 20px);
-     text-overflow: ellipsis;
-     white-space: nowrap;
-     word-wrap: normal;
+   .mypost-section {
+     display: flex;
+     min-width: 100%;
+     justify-content: center;
+   }
+   
+   .mypost__wrap {
+     display: flex;
+     flex-wrap: wrap;
+     max-width: 1000px;
      width: inherit;
-     overflow: hidden;
-     border-bottom: 1px solid transparent; */
+     grid-gap: 20px;
+     /* padding-left: 30px; */
+     margin: 10px 0px 40px 0px;
    }
+   .mypost__list {
+     display: flex;
+     justify-content: center;
+   }
+   
+   

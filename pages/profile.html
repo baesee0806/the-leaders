@@ -1,55 +1,44 @@
-<div class="wrap">
-     <section class="profile-section">
-        <h1>내 정보</h1>
-        <div class="profile">
-          <!-- 프로필 이미지 부분 -->
-           <form id="profileForm" class="profile__image-box" onsubmit="changeProfileImage(event)">
-                <div class="profile__image">
-                     <!-- label의 for="" = input의 id 값 -->
-                     <label id="imgLabel" for="imgInput">
-                          <img id="profileView" src="/assets/transparentProfile.png"/>
-                          <input onchange="onFileChange(event)" id="imgInput" type="file" accept="images/*" />
-                     </label>
-                </div>
-                <input id="profileImageBtn" class="profile__upload-btn" type="submit" value="이미지 변경" />
-           </form>
-        
-          <!-- 닉네임, 이메일 부분 -->
-           <div class="profile__text-box">
-               <form class="profile__name-box" id="profileForm" onsubmit="changeProfileNickname(event)">
-                 <strong class="profile__name">닉네임</strong>
-                 <div id="profileNickname_val" class="profile__name-val" style="display: block;"></div>   
-                 <input id="profileNickname" class="profile__name-input" type="text" placeholder="변경할 닉네임" style="display: none;" maxlength="8" value="" />
-                 <input id="profileNicknameBtn" class="profile__name-btn" onclick="nicknameBtn()" type="submit" value="닉네임 수정" />
-               </form>         
-               <div class="profile__mail-box">
-                 <strong class="profile__mail">이메일 주소</strong>
-                 <div id="profileEmail" class="profile__mail-val"></div>  
-               </div>
-            <!-- <div class="profile__logout-btn-box">
-              <div class="profile__logout-btn">로그아웃</div>
-            </div> -->
-           </div>
-        </div>
-
-      </div>
-      <div class="wrap">
-       <section class="profile-section">
-          <h1>내가 작성한 글</h1>
-           <div class="mypost__wrap">
-             <div class="mypost">
-               <ul class="mypost__list">
-                 <li>
-                   <a href="/index.html">
-                     <span class="num"> 1 </span>
-                     <span class="txt">
-                       
-                     </span>
-                   </a>
-                 </li>
-               </ul>
+<article class="wrap">
+  <section class="profile-section">
+     <h1>내 정보</h1>
+     <div class="profile">
+       <!-- 프로필 이미지 부분 -->
+        <form id="profileForm" class="profile__image-box" onsubmit="changeProfileImage(event)">
+             <div class="profile__image">
+                  <!-- label의 for="" = input의 id 값 -->
+                  <label id="imgLabel" for="imgInput">
+                       <img id="profileView" src="/assets/transparentProfile.png"/>
+                       <input onchange="onFileChange(event)" id="imgInput" type="file" accept="images/*" />
+                  </label>
              </div>
-           </div>
-       </section>
-      </div> 
-         
+             <input id="profileImageBtn" class="profile__upload-btn" type="submit" value="이미지 변경" />
+        </form>
+     
+       <!-- 닉네임, 이메일 부분 -->
+        <div class="profile__text-box">
+            <form class="profile__name-box" id="profileForm" onsubmit="changeProfileNickname(event)">
+              <strong class="profile__name">닉네임</strong>
+              <div id="profileNickname_val" class="profile__name-val" style="display: block;"></div>   
+              <input id="profileNickname" class="profile__name-input" type="text" placeholder="변경할 닉네임" style="display: none;" maxlength="8" value="" />
+              <input id="profileNicknameBtn" class="profile__name-btn" onclick="nicknameBtn()" type="submit" value="닉네임 수정" />
+            </form>         
+            <div class="profile__mail-box">
+              <strong class="profile__mail">이메일 주소</strong>
+              <div id="profileEmail" class="profile__mail-val"></div>  
+            </div>
+         <!-- <div class="profile__logout-btn-box">
+           <div class="profile__logout-btn">로그아웃</div>
+         </div> -->
+        </div>
+     </div>
+   <!-- </section> -->
+   <h1>내가 작성한 글</h1>
+   <section class="mypost-section">
+         <div class="mypost__wrap">
+           <!-- <div class="mypost__list"> -->
+
+           <!-- </div> -->
+         </div>
+   </section>
+</article>
+      

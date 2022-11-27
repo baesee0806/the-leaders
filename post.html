@@ -62,14 +62,35 @@
 
     var 쿼리스트링 = new URLSearchParams(window.location.search)
     console.log(쿼리스트링.get('id'))
+
+
+
     
     //url에 숨겨 놨던 id 찾아서 doc() 넣어야함 
     db.collection('post').doc(쿼리스트링.get('id')).get().then((result) => {
+      firebase.auth().onAuthStateChanged((user) => {
+      if (user.uid == result.data().uid) {
+        // Button 보이기
+        // $("#edit").show();
+        // $("#delete").show();
+
+        $("#edit").style.display = "block";
+        $("#delete").style.display = "block";
+      } else {
+        // Button 숨기기
+        // $("#edit").hide();
+        // $("#delete").hide();
+
+        $("#edit").style.display = "none";
+        $("#delete").style.display = "none";
+      }
+    })
         console.log(result.data());
         let dates= result.data().date.toString();
         const detail = 
         `    
   <article class="foodContent__wrap">
+    
     <section class="foodContent__post-Header">
       <section class="foodContent__get-title">
         ${result.data().title}

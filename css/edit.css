@@ -167,6 +167,13 @@ body {
     object-fit: cover;
     height: 250px;
   }
+
+  #image_container {
+    margin-top: 15px;
+    object-fit: cover;
+    height: 250px;
+  }
+  
   
   /* .upload__img > label {
     border: 1px solid rgb(118, 118, 118);

@@ -47,8 +47,10 @@
             <div class="profile__image">
               <!-- label의 for="" = input의 id 값 -->
               <label class="edit_DBimg" id="imgLabel" for="imgInput">
-                <img id="editView" src="" />
+                <!-- 수정 전 원래 이미지가 들어가는 부분 -->
+                <img id="editView" class="editView" src="" />
                 <input id="imgInput" type="file" accept="images/*" onchange="setThumbnail(event)"/>
+                <!-- 새로 업로드한 이미지가 들어가는 부분 -->
                 <div id="image_container"></div>
               </label>
             </div>
@@ -135,7 +137,11 @@
         reader.onload = function(event) {
           var img = document.createElement("img");
           img.setAttribute("src", event.target.result);
+        //   document.querySelector('.editView').innerHTML = img
           document.querySelector("div#image_container").appendChild(img);
+        //   document.getElementById("editView").src = img;
+          // $("#editView").attr("src", img);
+          console.log(img)
         };
 
         reader.readAsDataURL(event.target.files[0]);
