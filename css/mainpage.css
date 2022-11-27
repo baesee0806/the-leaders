@@ -5,14 +5,14 @@
   /* height: 3000px; */
   display: flex;
   flex-wrap: wrap;
-  width: 100%;
+  /* width: 100%; */
 }
 
 .container{
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
-  width: inherit;
+  width: 100%;
   margin: 0 195px 40px 195px;
 }
 
