@@ -12,6 +12,10 @@ export const onToggle = () => {
 export const toLogout = () => {
   localStorage.clear();
   alert('logout 성공')
+  // Swal.fire({
+  //   title: "logout 성공",
+  //   confirmButtonColor: "#94D493",
+  // });
   headerEndEl.style.display = 'block'
   headerEndLogoutEl.style.display = 'none'
 }

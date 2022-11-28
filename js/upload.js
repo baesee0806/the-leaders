@@ -25,6 +25,8 @@ export const uploading = async (event) => {
   // const uploadfile = uploadBytes(storageRef, imgFile)
   const uploadTask = uploadBytesResumable(storageRef, imgFile);
 
+  document.getElementById("send").disabled = true;
+
   uploadTask.on(
     "state_change",
     // 변화시 동작하는 함수
@@ -80,10 +82,20 @@ export const uploading = async (event) => {
             profileImage: photoURL ? photoURL : "/assets/blankProfile.webp",
             time: parseInt(today),
           });
-          alert("등록완료");
+        //   alert("등록완료");
+          Swal.fire({
+            title: "등록완료",
+            confirmButtonColor: "#94D493",
+          });
+  
+          
           window.location.hash = "#";
         } catch (error) {
-          alert(error);
+        //   alert(error);
+          Swal.fire({
+            title: "등록에 실패했습니다",
+            confirmButtonColor: "#94D493",
+          });
           console.log("error in addDoc:", error);
         }
       });

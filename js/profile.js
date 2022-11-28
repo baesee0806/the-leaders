@@ -1,6 +1,5 @@
 import { authService, storageService, dbService } from "./firebase.js";
 import {
-  
   ref,
   uploadString,
   getDownloadURL,
@@ -43,8 +42,10 @@ export const changeProfileImage = async (event) => {
       .then(() => {
         // alert("이미지 수정 완료");
         Swal.fire({
-          text: "프로필 이미지 변경 완료",
-          confirmButtonColor: "#3085d6",
+          title: '프로필 이미지 변경 완료"',
+          icon: 'success',
+          confirmButtonColor: '#94D493', 
+          confirmButtonText: 'OK', 
         });
 
         // 프로필 이미지 변경 시 헤더의 이미지도 바로 업데이트해줌
@@ -54,7 +55,10 @@ export const changeProfileImage = async (event) => {
 
       .catch((error) => {
         // alert("프로필 수정 실패");
-        Swal.fire("프로필 이미지 변경 실패");
+        Swal.fire({
+          text: "프로필 이미지 변경 실패",
+          confirmButtonColor: "#3085d6",
+        });
         console.log("error:", error);
       });
   }
@@ -75,8 +79,13 @@ export const changeProfileNickname = async (event) => {
       .then(() => {
         // alert("닉네임 수정 완료");
         Swal.fire({
-          title: "닉네임 수정 완료",
-          confirmButtonColor: "#94D493",
+          // title: "닉네임 수정 완료",
+          // confirmButtonColor: "#94D493",
+
+          title: '닉네임 수정 완료"',
+          icon: 'success',
+          confirmButtonColor: '#94D493', 
+          confirmButtonText: 'OK', 
         });
 
         // 닉네임 수정 시 수정된 닉네임으로 새로고침 없이 자동 업데이트됨
@@ -87,7 +96,10 @@ export const changeProfileNickname = async (event) => {
         document.getElementById("profileNickname").value = null;
       })
       .catch((error) => {
-        Swal.fire("닉네임 수정 실패");
+        Swal.fire({
+          title: "닉네임 수정 실패",
+          confirmButtonColor: "#94D493",
+        });
         // alert("프로필 수정 실패");
         console.log("error:", error);
       });
@@ -157,25 +169,4 @@ export const getmypagelist = async () => {
       
     
   });
- 
-
-
-
-//  const postRef = collection(dbService, 'post')
-//   await setDoc(doc(postRef, updatedDisplayName)).then((결과) => {
-//       결과.forEach((doc) => {
-//           let dates = doc.data().date.toString()
-//           const 템플릿 = `
-//       <a href="/post.html?id=${doc.id}"> 
-//           <div class="product">
-//           <div class="thumbnail" style="background-image: url('${doc.data().contentImgUrl}')"></div>
-//               <div class="description">
-//                   <h5 class="title">${doc.data().title}</h5>
-//                   <p class="nicknames">${doc.data().nickname}님의 오늘의 먹을텐데</p>
-//                   <p class="date">${dates.slice(0,4)}-${dates.slice(4,6)}-${dates.slice(6)}</p>
-//               </div>
-//           </div></a>`
-//           $('.mypost__container').append(템플릿)
-//       })
-//   })
-}
+};  

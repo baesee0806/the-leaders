@@ -24,20 +24,18 @@
     </div>
    </header>
     
-    
-
     <div class="post__container">
       <div class="post__btn">
         <button class="post__btns" id="edit">수정</button>
         <button class="post__btns" id="delete">삭제</button>
       </div>
     </div>
-    
 
 <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
     const firebaseConfig = {
@@ -63,28 +61,26 @@
     var 쿼리스트링 = new URLSearchParams(window.location.search)
     console.log(쿼리스트링.get('id'))
 
-
-
     
     //url에 숨겨 놨던 id 찾아서 doc() 넣어야함 
     db.collection('post').doc(쿼리스트링.get('id')).get().then((result) => {
       firebase.auth().onAuthStateChanged((user) => {
       if (user.uid == result.data().uid) {
         // Button 보이기
-        // $("#edit").show();
-        // $("#delete").show();
+        $("#edit").show();
+        $("#delete").show();
 
-        $("#edit").style.display = "block";
-        $("#delete").style.display = "block";
+        // $("#edit").style.display = "block";
+        // $("#delete").style.display = "block";
       } else {
         // Button 숨기기
-        // $("#edit").hide();
-        // $("#delete").hide();
-
-        $("#edit").style.display = "none";
-        $("#delete").style.display = "none";
-      }
-    })
+        $("#edit").hide();
+        $("#delete").hide();
+        
+      //   $("#edit").style.display = "none";
+      //   $("#delete").style.display = "none";
+      // }
+    }
         console.log(result.data());
         let dates= result.data().date.toString();
         const detail = 
@@ -108,7 +104,7 @@
       </div>
       
       <div class="foodContent__user-Name">${result.data().nickname}</div>
-      <div class="foodContent__register-Date">작성일: ${dates.slice(0,4)}-${dates.slice(4,6)}-${dates.slice(6)}</div>
+      <div class="foodContent__register-Date">작성일: ${dates.slice(0,4)}-${dates.slice(4,6)}-${dates.slice(6,-6)}</div>
     </div>
   
     <!-- Top scroll button -->
@@ -138,7 +134,11 @@
       {
       db.collection("post").doc(쿼리스트링.get('id')).delete().then(() => {
         console.log("Document successfully deleted!");
-        alert("삭제가 완료되었습니다.")
+        // alert("삭제가 완료되었습니다.")
+        Swal.fire({
+              title: "삭제가 완료되었습니다.",
+              confirmButtonColor: "#94D493",
+        });
         window.location.href ='/index.html'
       
       }).catch((error) => {
@@ -146,26 +146,27 @@
       });
     }
     })
+  })
 
 </script>
 </body>
 </html>
 
-<!--현재 페이지 URL을 로드-->
-<!-- <div class="foodContent__post-Url">
-  <div id="Content-Url">
-    ${result.data().contentImgUrl}</div>
-  <div
-    class="foodContent__post-Url-clip"
-    onclick="urlClip(); return false;"
-  >
-    <img
-      src="/img/file_copy_FILL0_wght400_GRAD0_opsz48.png"
-      class="url-lmg"
-      alt="copy"
-    />
-  </div>
-</div> -->
+<!-- // 현재 페이지 URL을 로드
+//  <div class="foodContent__post-Url">
+//   <div id="Content-Url">
+//     ${result.data().contentImgUrl}</div>
+//   <div
+//     class="foodContent__post-Url-clip"
+//     onclick="urlClip(); return false;"
+//   >
+//     <img
+//       src="/img/file_copy_FILL0_wght400_GRAD0_opsz48.png"
+//       class="url-lmg"
+//       alt="copy"
+//     />
+//   </div>
+// </div> -->
 
 
   

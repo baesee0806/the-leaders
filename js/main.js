@@ -47,12 +47,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// document.querySelector('#log__inout').addEventListener('click',()=> {
-//   if( document.querySelector('#log__inout').innerText === '로그아웃'){
-//       logout()
-//   }
-// })
-
 
 // 전역함수 리스트 
 window.route = route;
@@ -65,7 +59,6 @@ window.changeProfileImage = changeProfileImage;
 window.changeProfileNickname = changeProfileNickname;
 window.nicknameBtn = nicknameBtn;
 window.handleLocation = handleLocation;
-
 
 window.uploading = uploading;
 window.route = route;

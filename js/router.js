@@ -41,7 +41,6 @@ export const handleLocation = async () => {
     // document.getElementById("headerProfileView").src =
     //   authService.currentUser.photoURL ?? "/assets/blankProfile.webp";
 
-
     getpagelist()
   }
 
@@ -57,7 +56,6 @@ export const handleLocation = async () => {
     document.getElementById("profileEmail").textContent =
       authService.currentUser.email ?? "이메일 없음";  
       
-    // changeHeaderProfile();
   };
 
 };

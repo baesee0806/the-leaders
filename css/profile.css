@@ -213,7 +213,7 @@ a {
    .mypost__wrap {
      display: flex;
      flex-wrap: wrap;
-     max-width: 1000px;
+     max-width: 940px;
      width: inherit;
      grid-gap: 20px;
      /* padding-left: 30px; */

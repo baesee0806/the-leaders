@@ -68,6 +68,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
       const firebaseConfig = {
@@ -140,7 +141,7 @@
         //   document.querySelector('.editView').innerHTML = img
           document.querySelector("div#image_container").appendChild(img);
         //   document.getElementById("editView").src = img;
-          // $("#editView").attr("src", img);
+          $("#editView").attr("src", img);
           console.log(img)
         };
 
@@ -179,7 +180,11 @@
           .doc(쿼리스트링.get("id"))
           .update(바꿀꺼)
           .then(() => {
-            alert("수정완료");
+            // alert("수정완료");
+            Swal.fire({
+              title: "수정완료",
+              confirmButtonColor: "#94D493",
+            });
             window.location.href = "/post.html?id=" + 쿼리스트링.get("id");
           });
       });

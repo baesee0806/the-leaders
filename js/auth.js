@@ -25,26 +25,31 @@ export function handleAuth(event){
           updateProfile(authService.currentUser, {
             displayName: signUpNickname ? signUpNickname : null,
             photoURL: "/assets/blankProfile.webp" ? "/assets/blankProfile.webp" : null
-          })
-           
+          })     
 
           // 회원가입 시 입력한 닉네임 DB에 저장하기
           // const signUpNickname = document.getElementById('signup__nick').value
           // authService.currentUser.displayName = signUpNickname;
         
-
           console.log(userCredential)
           const user = userCredential.user;
           window.location.hash = "/";
 
           console.log(user)
-         
+          Swal.fire({
+              title: '회원가입 완료"',
+              icon: 'success',
+              confirmButtonColor: '#94D493', // confrim 버튼 색깔 지정
+              confirmButtonText: 'OK',
+            });
         })
+
         .catch((error) => {
             console.log('error')
             const errorCode = error.code;
             const errorMessage = error.message;
         });
+        
 }else{
     event.preventDefault();
     const email = document.getElementById("signin__email");
@@ -55,11 +60,20 @@ export function handleAuth(event){
     // 유효성 검사 진행
     if (!emailVal) {
       alert("이메일을 입력해 주세요");
+      // Swal.fire({
+      //   title: "이메일을 입력해 주세요",
+      //   confirmButtonColor: "#94D493",
+      // });
+      
       email.focus();
       return;
     }
     if (!pwVal) {
-      alert("비밀번호를 입력해 주세요");
+      // alert("비밀번호를 입력해 주세요");
+      Swal.fire({
+        title: "비밀번호를 입력해 주세요",
+        confirmButtonColor: "#94D493",
+      });
       pw.focus();
       return;
     }
@@ -68,15 +82,25 @@ export function handleAuth(event){
     const matchedPw = pwVal.match(pwRegex);
   
     if (matchedEmail === null) {
-      alert("이메일 형식에 맞게 입력해 주세요");
+      // alert("이메일 형식에 맞게 입력해 주세요");
+      Swal.fire({
+        title: "이메일 형식에 맞게 입력해 주세요",
+        confirmButtonColor: "#94D493",
+      });
+      
       email.focus();
       return;
     }
     if (matchedPw === null) {
-      alert("비밀번호는 8자리 이상 영문자, 숫자, 특수문자 조합이어야 합니다.");
+      // alert("비밀번호는 8자리 이상 영문자, 숫자, 특수문자 조합이어야 합니다.");
+      Swal.fire({
+        title: "비밀번호는 8자리 이상 영문자, 숫자, 특수문자 조합이어야 합니다.",
+        confirmButtonColor: "#94D493",
+      });
       pw.focus();
       return;
     }
+    
     //로그인
     console.log("로그인이에요")
     event.preventDefault()

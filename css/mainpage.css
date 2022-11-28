@@ -12,10 +12,9 @@
 .container {
   display: flex;
   flex-wrap: wrap;
-  max-width: 1000px;
+  max-width: 980px;
   width: inherit;
   grid-gap: 40px;
-  padding-left: 10px;
   margin: 5% 0 5% 0;
 }
 
@@ -77,6 +76,6 @@
 }
 
 .card__nickname {
-  color: #66a965;
+  color: #434242;
   font-weight: bold;
 }
