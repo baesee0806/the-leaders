@@ -49,7 +49,12 @@
               <label class="edit_DBimg" id="imgLabel" for="imgInput">
                 <!-- 수정 전 원래 이미지가 들어가는 부분 -->
                 <img id="editView" class="editView" src="" />
-                <input id="imgInput" type="file" accept="images/*" onchange="setThumbnail(event)"/>
+                <input
+                  id="imgInput"
+                  type="file"
+                  accept="images/*"
+                  onchange="setThumbnail(event)"
+                />
                 <!-- 새로 업로드한 이미지가 들어가는 부분 -->
                 <div id="image_container"></div>
               </label>
@@ -72,12 +77,12 @@
 
     <script>
       const firebaseConfig = {
-        apiKey: "AIzaSyB3MMTH8QP9Lkb0sV-LSdbxzhWvkEYtvJk",
-        authDomain: "the-leaders-65e8b.firebaseapp.com",
-        projectId: "the-leaders-65e8b",
-        storageBucket: "the-leaders-65e8b.appspot.com",
-        messagingSenderId: "64173971484",
-        appId: "1:64173971484:web:429786c568e80ed13b27d9",
+        apiKey: "AIzaSyBxGYfOUnrpWSO71HG_iN4f6rRaKEgfYqk",
+        authDomain: "nwitter-51c1f.firebaseapp.com",
+        projectId: "nwitter-51c1f",
+        storageBucket: "nwitter-51c1f.appspot.com",
+        messagingSenderId: "419695487451",
+        appId: "1:419695487451:web:7955a904f17e968901dffe",
       };
       // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
@@ -114,44 +119,39 @@
           // $('#category').get(result.data().category)
           // $('#image').val(result.data().contentImgUrl)
         });
-    //   $("imgInput").click(() => {
-        const onFileChange = (event) => {
-          const theFile = event.target.files[0]; // file 객체를 theFile라는 변수에 담았음
-          // FileReader는 JS가 자체적으로 제공하는 API
-          const reader = new FileReader();
-          reader.readAsDataURL(theFile); // file 객체를 브라우저가 읽을 수 있는 data URL로 읽음.
-          // FileReader가 파일객체를 data URL로 변환 작업을 끝냈을 때
-          // finishedEvent 이벤트가 발생해서 result 값을 imgDataUrl에 담음
-          reader.onloadend = (finishedEvent) => {
-            const imgDataUrl = finishedEvent.currentTarget.result;
-            // 이미지를 업로드만 하고 업로드 버튼을 누르지 않았을 때는 스토리지에 저장하지 않기 위해
-            // localStorage에 imgDataUrl을 임시로 보관함
-            localStorage.setItem("imgDataUrl", imgDataUrl);
-            document.getElementById("editView").src = imgDataUrl;
-          };
+      //   $("imgInput").click(() => {
+      const onFileChange = (event) => {
+        const theFile = event.target.files[0]; // file 객체를 theFile라는 변수에 담았음
+        // FileReader는 JS가 자체적으로 제공하는 API
+        const reader = new FileReader();
+        reader.readAsDataURL(theFile); // file 객체를 브라우저가 읽을 수 있는 data URL로 읽음.
+        // FileReader가 파일객체를 data URL로 변환 작업을 끝냈을 때
+        // finishedEvent 이벤트가 발생해서 result 값을 imgDataUrl에 담음
+        reader.onloadend = (finishedEvent) => {
+          const imgDataUrl = finishedEvent.currentTarget.result;
+          // 이미지를 업로드만 하고 업로드 버튼을 누르지 않았을 때는 스토리지에 저장하지 않기 위해
+          // localStorage에 imgDataUrl을 임시로 보관함
+          localStorage.setItem("imgDataUrl", imgDataUrl);
+          document.getElementById("editView").src = imgDataUrl;
+        };
         // };
       };
 
       function setThumbnail(event) {
         var reader = new FileReader();
 
-        reader.onload = function(event) {
+        reader.onload = function (event) {
           var img = document.createElement("img");
           img.setAttribute("src", event.target.result);
-        //   document.querySelector('.editView').innerHTML = img
+          //   document.querySelector('.editView').innerHTML = img
           document.querySelector("div#image_container").appendChild(img);
-        //   document.getElementById("editView").src = img;
+          //   document.getElementById("editView").src = img;
           $("#editView").attr("src", img);
-          console.log(img)
+          console.log(img);
         };
 
         reader.readAsDataURL(event.target.files[0]);
       }
-
-
-
-
-
 
       $("#send").click(() => {
         // var file = document.querySelector('#image').files[0];

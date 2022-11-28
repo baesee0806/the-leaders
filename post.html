@@ -1,29 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
 
-  <!-- google font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
-  
-  <link rel="stylesheet" href="./css/particularity .css">
-</head>
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
+      rel="stylesheet"
+    />
 
-<body>
-   
-   <header class="edit-header">
-    <a href="/" class="logo">먹을텐데</a>
-    <div class="edit-header__end--logout">
-      <a href="#upload" onclick="route(event)">글쓰기</a>
-      <a href="#" onclick="route(event);logout();">로그아웃</a>
-    </div>
-   </header>
-    
+    <link rel="stylesheet" href="./css/particularity .css" />
+  </head>
+
+  <body>
+    <header class="edit-header">
+      <a href="/" class="logo">먹을텐데</a>
+      <div class="edit-header__end--logout">
+        <a href="#upload" onclick="route(event)">글쓰기</a>
+        <a href="#" onclick="route(event);logout();">로그아웃</a>
+      </div>
+    </header>
+
     <div class="post__container">
       <div class="post__btn">
         <button class="post__btns" id="edit">수정</button>
@@ -31,60 +33,69 @@
       </div>
     </div>
 
-<script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<script>
-    const firebaseConfig = {
-        apiKey: "AIzaSyB3MMTH8QP9Lkb0sV-LSdbxzhWvkEYtvJk",
-        authDomain: "the-leaders-65e8b.firebaseapp.com",
-        projectId: "the-leaders-65e8b",
-        storageBucket: "the-leaders-65e8b.appspot.com",
-        messagingSenderId: "64173971484",
-        appId: "1:64173971484:web:429786c568e80ed13b27d9"
-    };
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyBxGYfOUnrpWSO71HG_iN4f6rRaKEgfYqk",
+        authDomain: "nwitter-51c1f.firebaseapp.com",
+        projectId: "nwitter-51c1f",
+        storageBucket: "nwitter-51c1f.appspot.com",
+        messagingSenderId: "419695487451",
+        appId: "1:419695487451:web:7955a904f17e968901dffe",
+      };
 
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-</script>
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+    </script>
 
-<script src="https://code.jquery.com/jquery-3.6.1.min.js"
-    integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.1.min.js"
+      integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+      crossorigin="anonymous"
+    ></script>
 
-<script>
-    const db = firebase.firestore();
-    const storage = firebase.storage();
+    <script>
+      const db = firebase.firestore();
+      const storage = firebase.storage();
+      const auth = firebase.auth();
 
-    var 쿼리스트링 = new URLSearchParams(window.location.search)
-    console.log(쿼리스트링.get('id'))
+      var 쿼리스트링 = new URLSearchParams(window.location.search);
+      console.log(쿼리스트링.get("id"));
 
-    
-    //url에 숨겨 놨던 id 찾아서 doc() 넣어야함 
-    db.collection('post').doc(쿼리스트링.get('id')).get().then((result) => {
-      firebase.auth().onAuthStateChanged((user) => {
-      if (user.uid == result.data().uid) {
-        // Button 보이기
-        $("#edit").show();
-        $("#delete").show();
+      //url에 숨겨 놨던 id 찾아서 doc() 넣어야함
+      db.collection("post")
+        .doc(쿼리스트링.get("id"))
+        .get()
+        .then((result) => {
+          firebase.auth().onAuthStateChanged((user) => {
+            // 로그인하지 않았을 때 게시물의 상세 페이지가 뜨지 않는 문제로 코드 수정
+            if ( user && user.uid == result.data().uid) {
+              // Button 보이기
+              $("#edit").show();
+              $("#delete").show();
 
-        // $("#edit").style.display = "block";
-        // $("#delete").style.display = "block";
-      } else {
-        // Button 숨기기
-        $("#edit").hide();
-        $("#delete").hide();
-        
-      //   $("#edit").style.display = "none";
-      //   $("#delete").style.display = "none";
-      // }
-    }
-        console.log(result.data());
-        let dates= result.data().date.toString();
-        const detail = 
-        `    
+              // $("#edit").style.display = "block";
+              // $("#delete").style.display = "block";
+            } else {
+              // Button 숨기기
+              $("#edit").hide();
+              $("#delete").hide();
+            }
+
+            //   $("#edit").style.display = "none";
+            //   $("#delete").style.display = "none";
+            // } else {
+            //     $("#edit").hide();
+            //     $("#delete").hide();
+            // }
+            console.log(result.data());
+            let dates = result.data().date.toString();
+            const detail = `    
   <article class="foodContent__wrap">
     
     <section class="foodContent__post-Header">
@@ -104,7 +115,10 @@
       </div>
       
       <div class="foodContent__user-Name">${result.data().nickname}</div>
-      <div class="foodContent__register-Date">작성일: ${dates.slice(0,4)}-${dates.slice(4,6)}-${dates.slice(6,-6)}</div>
+      <div class="foodContent__register-Date">작성일: ${dates.slice(
+        0,
+        4
+      )}-${dates.slice(4, 6)}-${dates.slice(6, -6)}</div>
     </div>
   
     <!-- Top scroll button -->
@@ -122,34 +136,34 @@
       </div>
     </section>
     <!-- 좋아요 게시글 수정,  삭제버튼-->
-  </article>`
-        $('.post__container').append(detail)
-    })
-    $('#edit').click(() => {
-      window.location.href = '/edit.html?id=' + 쿼리스트링.get('id')
-
-    })
-    $('#delete').click(() => {
-      if (window.confirm("삭제하시겠습니까?"))
-      {
-      db.collection("post").doc(쿼리스트링.get('id')).delete().then(() => {
-        console.log("Document successfully deleted!");
-        // alert("삭제가 완료되었습니다.")
-        Swal.fire({
-              title: "삭제가 완료되었습니다.",
-              confirmButtonColor: "#94D493",
+  </article>`;
+            $(".post__container").append(detail);
+          });
+          $("#edit").click(() => {
+            window.location.href = "/edit.html?id=" + 쿼리스트링.get("id");
+          });
+          $("#delete").click(() => {
+            if (window.confirm("삭제하시겠습니까?")) {
+              db.collection("post")
+                .doc(쿼리스트링.get("id"))
+                .delete()
+                .then(() => {
+                  console.log("Document successfully deleted!");
+                  // alert("삭제가 완료되었습니다.")
+                  Swal.fire({
+                    title: "삭제가 완료되었습니다.",
+                    confirmButtonColor: "#94D493",
+                  });
+                  window.location.href = "/index.html";
+                })
+                .catch((error) => {
+                  console.error("Error removing document: ", error);
+                });
+            }
+          });
         });
-        window.location.href ='/index.html'
-      
-      }).catch((error) => {
-        console.error("Error removing document: ", error);
-      });
-    }
-    })
-  })
-
-</script>
-</body>
+    </script>
+  </body>
 </html>
 
 <!-- // 현재 페이지 URL을 로드
@@ -167,6 +181,3 @@
 //     />
 //   </div>
 // </div> -->
-
-
-  

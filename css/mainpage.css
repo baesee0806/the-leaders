@@ -63,6 +63,12 @@
   margin: 3px 0px 8px 0px;
   font-weight: bold;
   font-size: 17px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 280px;
+  white-space: nowrap;
+  display: block;
+  text-align: center;
 }
 
 .nicknames {

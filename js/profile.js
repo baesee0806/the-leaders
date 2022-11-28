@@ -82,7 +82,7 @@ export const changeProfileNickname = async (event) => {
           // title: "닉네임 수정 완료",
           // confirmButtonColor: "#94D493",
 
-          title: '닉네임 수정 완료"',
+          title: '닉네임 수정 완료',
           icon: 'success',
           confirmButtonColor: '#94D493', 
           confirmButtonText: 'OK', 
